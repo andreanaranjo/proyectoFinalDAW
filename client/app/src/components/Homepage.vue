@@ -3,13 +3,13 @@
         <h2>Hola! Placeholder para usuario</h2>
         <ol>
             <li>
-                <router-link to='announcements'>Anuncios</router-link>
+                <router-link to='/app/announcements'>Anuncios</router-link>
             </li>
             <li>
-                <router-link to='events'>Eventos</router-link>
+                <router-link to='/app/events' >Eventos</router-link>
             </li>
             <li>
-                <router-link to='profile'>Perfil</router-link>
+                <router-link to='/app/profile' >Perfil</router-link>
             </li>
         </ol>
         <router-view/>

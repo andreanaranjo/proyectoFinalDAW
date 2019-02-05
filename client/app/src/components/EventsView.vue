@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Event placeholder</h2>
+        <h2>TODO: Hacer esto bonito</h2>
         <ol>
             <li v-for='event in eventos'>
                 <h2>{{ event.name }}</h2>
