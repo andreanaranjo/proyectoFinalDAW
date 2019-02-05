@@ -2,9 +2,8 @@
     <div>
         <h2>Event placeholder</h2>
         <ol>
-            <li v-for='event in events'>
-                <img src="placeholder"><!-- TODO: Reemplazar el placeholder-->
-                <h2>{{ event.name}}</h2>
+            <li v-for='event in eventos'>
+                <h2>{{ event.name }}</h2>
             </li>
         </ol>
     </div>
@@ -12,16 +11,21 @@
 </template>
 
 <script>
-    let hostname = 'http://localhost:3000'
+    import axios from 'axios';
+    let hostname = 'http://localhost:3000' // Añadí el hostname porque la API está hosteada en un puerto distinto al dominio local.
     export default {
         name: 'EventsView',
+        
         data () {
             return {
-                events: null
+                eventos: []
             }
         },
         mounted() {
-            axios.get(hostname+'/api/')
+            axios
+            .get(hostname+'/api/v1/events')
+            .then( response => this.eventos = response.data)
+            .catch(error => console.log(error))
         }
     }
 
