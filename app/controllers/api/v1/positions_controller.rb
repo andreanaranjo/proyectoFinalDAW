@@ -1,4 +1,4 @@
-class PositionsController < ApplicationController
+class Api::V1::PositionsController < ApplicationController
   before_action :set_position, only: [:show, :update, :destroy]
 
   # GET /positions

@@ -1,4 +1,4 @@
-class AnnouncementsController < ApplicationController
+class Api::V1::AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :update, :destroy]
 
   # GET /announcements
