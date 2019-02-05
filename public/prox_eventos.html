@@ -2,14 +2,12 @@
 <html>
 	<head>
 		<title>SuitCase WebPage</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta charset ="utf-8">
 		<meta name="description" content="Página Web del club de organización de eventos SuitCase">
 		<meta name = "keywords" content="evento, SuitCase, ESPOL, turismo, comida, transporte, personal, fiesta">
-		<link rel = "stylesheet" href="../css/estilo.css">
-
+		<link rel = "stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	</head>
 
 	<body>
@@ -17,7 +15,7 @@
 		<header class="header">
 			<div id= "prueba">
 				<div class= "izquierda">
-					<img src="../img/Suitcase_logo_recorte.jpg" id="logo_SuitCase">
+					<img src="img/Suitcase_logo_recorte.jpg" id="logo_SuitCase">
 				</div>
 				<div class = "derecha">
 					<section id="lab_social_icon_footer">
@@ -44,48 +42,20 @@
 		    <i class="fa fa-bars"></i>
 		  </a>
 		</div>
-		<div>
-			<br>
+		<div class="container">
+			<section>
+				<article class="proxEventos">
+					<h2 class="titEv">Próximos Eventos</h2>
+
+					<div>
+
+						<h2> I3Week </h2>
+						<img src="img/i3week_logo.png" class ="prox">
+						<p>Espol invitá a participar del evento de I3Week que se organiza con motivo de una semana de la innovacion donde se presentarán charlas, concuros y muchas sorpresas. Para conocer más visitar el link: 	 </p>
+						<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDpzkVtDOX9jN2C2urJQFgnQlm-EizynwM&q=Guayaquil,Ecuador"></iframe>
+				</article>
+			</section>
 		</div>
-		<h2 class="w3-center">SuitCase 2018</h2>
-		<div class="w3-content w3-display-container">
-			<img class="mySlides" src="./../img/i3week.jpg" >
-			<img class="mySlides" src="./../img/Djam.jpg" >
-			<img class="mySlides" src="./../img/suitcase-members.jpg" >
-			<img class="mySlides" src="./../img/feria.jpg" >
-
-			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-			<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-		</div>
-
-		<object width="400" height="50" data="./../img/snailrunner1.swf"></object>
-
-	<script>
-		function myFunction() {
-		    var x = document.getElementById("myTopnav");
-		    if (x.className === "topnav") {
-		        x.className += " responsive";
-		    } else {
-		        x.className = "topnav";
-		    }
-		}
-		var slideIndex = 1;
-		showDivs(slideIndex);
-
-		function plusDivs(n) {
-		  showDivs(slideIndex += n);
-		}
-
-		function showDivs(n) {
-		  var i;
-		  var x = document.getElementsByClassName("mySlides");
-		  if (n > x.length) {slideIndex = 1}    
-		  if (n < 1) {slideIndex = x.length}
-		  for (i = 0; i < x.length; i++) {
-		     x[i].style.display = "none";  
-		  }
-		  x[slideIndex-1].style.display = "block";  
-		}
-	</script>
+	</div>
 	</body>
 </html>

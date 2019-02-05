@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_182919) do
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score"
     t.index ["member_id"], name: "index_assignments_on_member_id"
     t.index ["task_id"], name: "index_assignments_on_task_id"
   end
@@ -76,7 +75,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_182919) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "completed"
     t.index ["event_id"], name: "index_tasks_on_event_id"
   end
 
