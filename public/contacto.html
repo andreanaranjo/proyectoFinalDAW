@@ -1,21 +1,19 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>SuitCase WebPage</title>
+	<head><title>SuitCase Contacto</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta charset ="utf-8">
 		<meta name="description" content="Página Web del club de organización de eventos SuitCase">
 		<meta name = "keywords" content="evento, SuitCase, ESPOL, turismo, comida, transporte, personal, fiesta">
-		<link rel = "stylesheet" href="../css/estilo.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel = "stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
-
 	<body>
-		<!-- Header -->
 		<header class="header">
 			<div id= "prueba">
 				<div class= "izquierda">
-					<img src="../img/Suitcase_logo_recorte.jpg" id="logo_SuitCase">
+					<img src="img/Suitcase_logo_recorte.jpg" id="logo_SuitCase">
 				</div>
 				<div class = "derecha">
 					<section id="lab_social_icon_footer">
@@ -44,18 +42,38 @@
 		</div>
 		<div class="container">
 			<section>
-				<article class="proxEventos">
-					<h2 class="titEv">Próximos Eventos</h2>
-
+				<h2>Formulario</h2>
+				<form method="post">
 					<div>
-
-						<h2> I3Week </h2>
-						<img src="./../img/i3week_logo.png" class ="prox">
-						<p>Espol invitá a participar del evento de I3Week que se organiza con motivo de una semana de la innovacion donde se presentarán charlas, concuros y muchas sorpresas. Para conocer más visitar el link: 	 </p>
-						<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDpzkVtDOX9jN2C2urJQFgnQlm-EizynwM&q=Guayaquil,Ecuador"></iframe>
-				</article>
+						<label for="nombres">Nombres:</label>
+						<input type="text" placeholder="Nombres" id="nombres" name="nombres_usuario" />
+					</div>
+					<div>
+						<label for="apellidos">Apellidos:</label>
+						<input type="text" placeholder="Apellidos" id="apellidos" name="apellidos_usuario" />
+					</div>
+					<div>
+						<label for="correo">Correo electrónico:</label>
+						<input type="email" placeholder="johndoe@gmail.com" id="correo" name="correo_usuario" />
+					</div>
+					<div>
+						<label for="telefono">Telefono:</label>
+						<input type="text" placeholder="2123456 ó 0987654321" id="telefono" name="telefono_usuario" />
+					</div>
+					<div>
+						<label for="mensaje">Mensaje:</label>
+						<textarea id="mensaje" placeholder="Motivo de querer contactarse" name="mensaje_usuario"></textarea>
+					</div>
+					<div>
+						<label for="imagen">Imagen de contacto:</label>
+						<input id="imagen" type="file" name="pic" accept="image/*">
+					</div>
+					<div class="button">
+						<button onclick="notificar()" id="botonForm" type="submit">Enviar</button>
+					</div>
+				</form>
 			</section>
 		</div>
-	</div>
+		<script type="text/javascript" src="js/script.js"></script>
 	</body>
 </html>

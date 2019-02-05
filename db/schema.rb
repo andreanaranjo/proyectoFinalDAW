@@ -17,13 +17,11 @@ ActiveRecord::Schema.define(version: 2019_02_05_171952) do
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score"
     t.index ["member_id"], name: "index_assignments_on_member_id"
     t.index ["task_id"], name: "index_assignments_on_task_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "title"
     t.string "content"
     t.integer "post_id"
     t.string "author"
@@ -61,7 +59,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_171952) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
     t.integer "member_id"
     t.text "content"
     t.datetime "created_at", null: false
@@ -76,7 +73,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_171952) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "completed"
     t.index ["event_id"], name: "index_tasks_on_event_id"
   end
 
