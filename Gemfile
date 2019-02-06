@@ -43,3 +43,12 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#For password methods
+gem 'bcrypt', '~> 3.1.7'
+
+#For the implementation of the JWT token generation 
+gem 'jwt'
+
+#gem that facilitates the connection between the controller and the model
+gem 'simple_command'
