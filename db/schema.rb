@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_181538) do
     t.index ["event_id"], name: "index_tasks_on_event_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "user", force: :cascade do |t|
     t.string "name"
     t.string "password"
     t.datetime "created_at", null: false

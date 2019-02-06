@@ -6,14 +6,17 @@ import HomePage from '@/components/HomePage'
 import ProfileView from '@/components/ProfileView'
 import AnnouncementsView from '@/components/AnnouncementsView'
 import EventsView from '@/components/EventsView'
+import LandingPage from '@/components/LandingPage'
+import AboutPage from '@/components/AboutPage'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'LandingPage',
+      component: LandingPage
     },
     {
       path: '/app',
@@ -33,6 +36,11 @@ export default new Router({
           component: EventsView
         }
       ]
+    },
+    {
+      path: '/about',
+      name: 'AboutPage',
+      component: AboutPage
     },
     {
       path: '/comp1',
