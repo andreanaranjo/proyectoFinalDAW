@@ -19,6 +19,8 @@
 </script>
 
 <style scoped>
+    @import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
+
     .topnav {
         overflow: hidden;
         background: #00adb5;
@@ -49,5 +51,30 @@
         color: #f8b500;
         font-size: 30px;
     }
-    
+
+    @media screen and (max-width: 900px) {
+        .topnav.responsive {position: relative;}
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+        .topnav a:hover {
+            color: #f8b500;
+            font-size: 30px;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .topnav a:not(:first-child) {display: none;}
+        .topnav a.icon {
+            float: right;
+            display: block;
+        }
+    }
 </style>

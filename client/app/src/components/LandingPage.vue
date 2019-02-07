@@ -1,28 +1,5 @@
 <template>
     <div>
-        <header class="header">
-            <div id= "prueba">
-                <div class= "izquierda">
-                    <img src="@/assets/Suitcase_logo_recorte.jpg" id="logo_SuitCase">
-                </div>
-                <div class = "derecha">
-                    <section id="lab_social_icon_footer">
-                        <div class="container">
-                            <div class="text-center center-block">
-                                <a href="https://www.facebook.com/espol/" target="_blank"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
-                                <a href="https://twitter.com/espol" target="_blank"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
-                                <a href="https://plus.google.com/espol" target="_blank"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
-                                <a href="mailto:#oswjagui@espol.edu.ec" target="_blank"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </header>
-        <TopNav />
-        <div>
-            <br>
-        </div>
         <h2 class="w3-center">SuitCase 2018</h2>
         <carousel :per-page=1 :autoplay=true :autoplayTimeout=5000>
             <slide>
@@ -44,13 +21,11 @@
 
 <script>
     import {Carousel, Slide} from 'vue-carousel';
-    import TopNav from './TopNav';
     export default {
         name: 'LandingPage',
         components: {
             Carousel,
-            Slide,
-            TopNav
+            Slide
         }
     }
 </script>
@@ -307,37 +282,6 @@
         margin-right: auto;
         max-width: 90%;
 	}
-    .w3-content{max-width:980px;
-    }
-    
-    article a{
-        color:white;
-    }
-    article.quienesSomos, article.queHacemos{
-        background-color: #00adb5;
-        border-radius: 15px; 
-        padding-bottom: 10px;
-    }
-    article.quienesSomos div, article.queHacemos div.divisor_seccion{
-        margin: 20px;
-        padding:10px;
-        border-color: white;
-        border-style: solid;
-        border-width: 5px;
-    }
-    
-    article.quienesSomos h3, article.queHacemos h3{
-        color: #f8b500;
-        text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
-        
-    }
-    
-    article.quienesSomos div img{
-        border:1px solid #021a40;
-        border-radius:150px;
-        padding: 0;
-        margin-bottom: 20px;
-    }
     
     svg {
         border: 1px solid #000000;
@@ -557,31 +501,9 @@
         }
     }
     
-    @media screen and (max-width: 900px) {
-        .topnav a:not(:first-child) {display: none;}
-        .topnav a.icon {
-            float: right;
-            display: block;
-        }
-    }
     
-    @media screen and (max-width: 900px) {
-        .topnav.responsive {position: relative;}
-        .topnav.responsive .icon {
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
-        .topnav.responsive a {
-            float: none;
-            display: block;
-            text-align: left;
-        }
-        .topnav a:hover {
-            color: #f8b500;
-            font-size: 30px;
-        }
-    }
+    
+    
     
     div.container{
         margin-bottom: 2em;

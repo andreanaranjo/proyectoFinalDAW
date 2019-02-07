@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import NavBar from '@/components/NavBar'
 import HomePage from '@/components/HomePage'
 import ProfileView from '@/components/ProfileView'
 import AnnouncementsView from '@/components/AnnouncementsView'
 import EventsView from '@/components/EventsView'
 import LandingPage from '@/components/LandingPage'
 import AboutPage from '@/components/AboutPage'
-
+import WhatWeDoPage from '@/components/WhatWeDoPage'
+import UpcomingEvents from '@/components/UpcomingEvents'
+import Portfolio from '@/components/Portfolio'
+import Contact from '@/components/Contact'
 Vue.use(Router)
 
 export default new Router({
@@ -43,9 +44,24 @@ export default new Router({
       component: AboutPage
     },
     {
-      path: '/comp1',
-      name: 'NavBar',
-      component: NavBar
+      path: '/what-we-do',
+      name: 'WhatWeDo',
+      component: WhatWeDoPage
+    },
+    {
+      path: '/upcoming-events',
+      name: 'Upcoming Events',
+      component: UpcomingEvents
+    },
+    {
+      path: '/portfolio',
+      name: 'Portafolio',
+      component: Portfolio
+    },
+    {
+      path: '/contact',
+      name: 'Contacto',
+      component: Contact
     }
   ]
 })
