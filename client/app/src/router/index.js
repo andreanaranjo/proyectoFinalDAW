@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomePage from '@/components/HomePage'
-import ProfileView from '@/components/ProfileView'
-import AnnouncementsView from '@/components/AnnouncementsView'
-import EventsView from '@/components/EventsView'
+
+
+import HomePage from '@/components/app/HomePage'
+import ProfileView from '@/components/app/ProfileView'
+import AnnouncementsView from '@/components/app/AnnouncementsView'
+import EventsView from '@/components/app/EventsView'
+
+
 import LandingPage from '@/components/LandingPage'
 import AboutPage from '@/components/AboutPage'
 import WhatWeDoPage from '@/components/WhatWeDoPage'
