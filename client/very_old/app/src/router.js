@@ -1,10 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Dashboard from './views/Dashboard'
-Vue.use(Router)
+import Vue from "vue";
+import Router from "vue-router";
+import Dashboard from "./views/Dashboard"
+
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
@@ -25,4 +26,4 @@ export default new Router({
       component: () => import('./views/EventsView')
     }
   ]
-})
+});

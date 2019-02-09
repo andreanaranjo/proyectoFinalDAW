@@ -1,27 +1,52 @@
 <template>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-3" >
-                <div>
-                    <h2>Próximos eventos</h2>
-                    <div v-if="eventos.length > 0">
-                            <EventShow v-for="e in eventos" :event="e" />
-                    </div>
-                    <p v-else>Hubo un problema al contactar la API</p>
-                </div>
-            </div>
-            <div class="col-6">
-                <AnnouncementShow v-for="a in anuncios" class="minianuncio" :anuncio="a" />
-            </div>
-            <div class="col-3">
-                <div>
-                    <h2>Lista de miembros</h2>
-                    <MemberShow v-for="m in miembros" class="minimember" :member="m"/>
-                </div>
-                
-            </div>
-        </div>
+    <v-container>
+        <h2>Próximos eventos</h2>
+        <v-layout row wrap v-if="eventos.length > 0">
+            <v-flex lg3 xs12 v-for="e in listaEventos" class="eventos">
+                <v-card max-width="400"    >
+                    <v-card-media contain>
+                        <v-img src="//via.placeholder.com/350x150"/>
+                    </v-card-media>
+                    <v-card-title primary-title>
+                        <EventShow :event="e"/>
+                    </v-card-title>
+                    <v-card-actions>
+                        
+                    </v-card-actions>
+                </v-card> 
+            </v-flex> 
+        </v-layout>
+        <p v-else>Hubo un error al contactar la API</p>
+        <v-spacer></v-spacer>
+        <h2 v-if="anuncios.length > 0">Anuncios recientes</h2>
+        <v-layout row wrap v-if="anuncios.length > 0">
+            <v-flex lg3 xs12 v-for="a in listaAnuncios" class="anuncios">
+                <v-card max-width="400">
+                    <v-card-media contain>
+                            <v-img src="//via.placeholder.com/350x150"/>
+                    </v-card-media>
+                    <v-card-title primary-title>
+                        <AnnouncementShow :anuncio="a" />
+                    </v-card-title>
+                </v-card>
+            </v-flex>
+        </v-layout>
+        <h2 v-else>Hubo un error al obtener los anuncios</h2>
+        <h2>Miembros</h2>
+        <v-layout row wrap v-if="miembros.length > 0">
+            <v-flex lg3 xs12 v-for="m in listaMiembros" class="miembros">
+                <v-card>
+                        <v-card-media contain>
+                                <v-img src="//via.placeholder.com/350x150"/>
+                        </v-card-media>
+                        <v-card-title primary-title>
+                            <MemberShow :member="m"/>
+                        </v-card-title>
+                </v-card>
+            </v-flex>
+        </v-layout>
     </div>
+</v-container>
 </template>
 
 <script>
@@ -29,7 +54,6 @@
     import AnnouncementShow from '@/components/AnnouncementShow'
     import MemberShow from '@/components/MemberShow'
     import axios from 'axios';
-    import bootstrap from 'bootstrap'
     
     export default {
         name: 'Dashboard',
@@ -44,6 +68,11 @@
                 anuncios: [],
                 miembros: []
             }
+        },
+        computed: {
+            listaEventos: function () { return this.eventos.slice(0,3)},
+            listaAnuncios: function() {return this.anuncios.slice(0,3)},
+            listaMiembros: function() {return this.miembros.slice(0,3)}
         },
         mounted(){
             let hostname = "http://localhost:3000"
@@ -69,5 +98,7 @@
 </script>
 
 <style scoped>
-    
+    .miembros, .eventos,.anuncios {
+        margin: 10px;
+    }
 </style>
