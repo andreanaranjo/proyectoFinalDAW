@@ -111,3 +111,4 @@ Assignment.create(
   member_id: valeria.id,
   task_id: reserva_aula.id
 )
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
