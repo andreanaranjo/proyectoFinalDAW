@@ -3,7 +3,7 @@ class Api::V1::EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    @events = Event.all.order("due_time DESC").limit(10)
 
     render json: @events
   end
