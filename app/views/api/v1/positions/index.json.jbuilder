@@ -1,1 +1,1 @@
-json.array! @api_v1_positions, partial: 'api_v1_positions/api_v1_position', as: :api_v1_position
+json.array! @api_v1_positions, partial: 'positions/position', as: :api_v1_position
