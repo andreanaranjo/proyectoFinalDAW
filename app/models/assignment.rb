@@ -1,4 +1,4 @@
 class Assignment < ApplicationRecord
-  belongs_to :member
-  belongs_to :task
+  has_one :member
+  has_one :task
 end

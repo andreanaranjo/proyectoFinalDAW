@@ -1,51 +1,53 @@
-class Api::V1::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update, :destroy]
+class Api::V1::PostsController < ApiController
+  before_action :set_api_v1_post, only: [:show, :update, :destroy]
 
-  # GET /posts
+  # GET /api/v1/posts
+  # GET /api/v1/posts.json
   def index
-    @posts = Post.all
-
-    render json: @posts
+    @api_v1_posts = Post.all
   end
 
-  # GET /posts/1
+  # GET /api/v1/posts/1
+  # GET /api/v1/posts/1.json
   def show
-    render json: @post
   end
 
-  # POST /posts
+  # POST /api/v1/posts
+  # POST /api/v1/posts.json
   def create
-    @post = Post.new(post_params)
+    @api_v1_post = Post.new(api_v1_post_params)
 
-    if @post.save
-      render json: @post, status: :created, location: @post
+    if @api_v1_post.save
+      render :show, status: :created, location: @api_v1_post
     else
-      render json: @post.errors, status: :unprocessable_entity
+      render json: @api_v1_post.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /posts/1
+  # PATCH/PUT /api/v1/posts/1
+  # PATCH/PUT /api/v1/posts/1.json
   def update
-    if @post.update(post_params)
-      render json: @post
+    if @api_v1_post.update(api_v1_post_params)
+      render :show, status: :ok, location: @api_v1_post
     else
-      render json: @post.errors, status: :unprocessable_entity
+      render json: @api_v1_post.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /posts/1
+  # DELETE /api/v1/posts/1
+  # DELETE /api/v1/posts/1.json
   def destroy
-    @post.destroy
+    @api_v1_post.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
+    def set_api_v1_post
+      @api_v1_post = Post.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
-    def post_params
-      params.require(:post).permit(:member_id, :content)
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def api_v1_post_params
+      params.fetch(:api_v1_post, {})
     end
 end

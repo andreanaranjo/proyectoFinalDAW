@@ -3,7 +3,9 @@
 one:
   member: one
   content: MyText
+  title: MyString
 
 two:
   member: two
   content: MyText
+  title: MyString

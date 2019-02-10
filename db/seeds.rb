@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-# Add 3 positions.
 Position.create(name: 'Presidente', desc: 'Presidente del Club')
 Position.create(name: 'Vicepresidente', desc: 'Vicepresidente del Club')
 Position.create(name: 'Miembro', desc: 'Miembro regular del Club')
@@ -65,7 +63,7 @@ post3 = Post.create(
 )
 
 # Add comments to post!
-Comment.create(
+PostComment.create(
   title: 'Felicitaciones!',
   content: 'Felicitaciones por conseguir '\
 'un nuevo auspiciante para el evento! Son lo máximo!',
@@ -111,4 +109,4 @@ Assignment.create(
   member_id: valeria.id,
   task_id: reserva_aula.id
 )
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -1,3 +1,3 @@
 class Announcement < ApplicationRecord
-  belongs_to :member
+  has_one :member
 end

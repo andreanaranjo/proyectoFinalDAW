@@ -1,51 +1,53 @@
-class Api::V1::TasksController < ApplicationController
-  before_action :set_task, only: [:show, :update, :destroy]
+class Api::V1::TasksController < ApiController
+  before_action :set_api_v1_task, only: [:show, :update, :destroy]
 
-  # GET /tasks
+  # GET /api/v1/tasks
+  # GET /api/v1/tasks.json
   def index
-    @tasks = Task.all
-
-    render json: @tasks
+    @api_v1_tasks = Task.all
   end
 
-  # GET /tasks/1
+  # GET /api/v1/tasks/1
+  # GET /api/v1/tasks/1.json
   def show
-    render json: @task
   end
 
-  # POST /tasks
+  # POST /api/v1/tasks
+  # POST /api/v1/tasks.json
   def create
-    @task = Task.new(task_params)
+    @api_v1_task = Task.new(api_v1_task_params)
 
-    if @task.save
-      render json: @task, status: :created, location: @task
+    if @api_v1_task.save
+      render :show, status: :created, location: @api_v1_task
     else
-      render json: @task.errors, status: :unprocessable_entity
+      render json: @api_v1_task.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /tasks/1
+  # PATCH/PUT /api/v1/tasks/1
+  # PATCH/PUT /api/v1/tasks/1.json
   def update
-    if @task.update(task_params)
-      render json: @task
+    if @api_v1_task.update(api_v1_task_params)
+      render :show, status: :ok, location: @api_v1_task
     else
-      render json: @task.errors, status: :unprocessable_entity
+      render json: @api_v1_task.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /tasks/1
+  # DELETE /api/v1/tasks/1
+  # DELETE /api/v1/tasks/1.json
   def destroy
-    @task.destroy
+    @api_v1_task.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
+    def set_api_v1_task
+      @api_v1_task = Task.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
-    def task_params
-      params.require(:task).permit(:event_id, :name, :desc, :deadline)
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def api_v1_task_params
+      params.fetch(:api_v1_task, {})
     end
 end

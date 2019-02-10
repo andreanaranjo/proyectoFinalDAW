@@ -3,11 +3,13 @@
 one:
   name: MyString
   last_name: MyString
-  dob: 2019-01-22
-  date_ingreso: 2019-01-22
+  dob: 2019-02-10
+  date_ingreso: 2019-02-10
+  position: one
 
 two:
   name: MyString
   last_name: MyString
-  dob: 2019-01-22
-  date_ingreso: 2019-01-22
+  dob: 2019-02-10
+  date_ingreso: 2019-02-10
+  position: two

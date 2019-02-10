@@ -1,3 +1,3 @@
 class Member < ApplicationRecord
-    has_one :position
+  has_one :position
 end
