@@ -7,6 +7,7 @@
         v-for="item in items"
         :key="item.title"
         @click=""
+        v-if="$store.logged_in && item.requires_auth || !$store.logged_in && !item.requires_auth"
         >
         <v-list-tile-action>
           <v-icon>{{ item.icon }}</v-icon>
@@ -50,12 +51,14 @@
     },
     data () {
       return {
-        drawer: null,
+        drawer: false,
         items: [
-        { title: 'Dashboard', icon: 'dashboard', to: "/" },
-        { title: 'Anuncios', icon: 'notifications_active', to: "/announcements" },
-        { title: 'Eventos', icon: 'calendar_today', to: "/events"},
-        { title: 'Perfil', icon: 'account_box',to:"/profile" }
+        { title: 'Dashboard', icon: 'dashboard', to: "/dashboard", requires_auth: true },
+        { title: 'Anuncios', icon: 'notifications_active', to: "/announcements" , requires_auth: true},
+        { title: 'Eventos', icon: 'calendar_today', to: "/events", requires_auth: true},
+        { title: 'Perfil', icon: 'account_box',to:"/profile", requires_auth: true},
+        { title: 'Iniciar sesión', icon: "lock_open", to:"/login", requires_auth: false},
+        { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true}
         ]
       }
     }
