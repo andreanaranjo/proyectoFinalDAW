@@ -21,7 +21,14 @@ const router = new Router({
     {
       path: '/profile',
       component: () => import('./views/ProfileView'),
-      meta: {requiresAuth: true}
+      meta: {requiresAuth: true},
+      children: [
+        {
+        path:'/edit',
+        component: () => import('./views/EditProfileView'),
+        meta: {requiresAuth: true}
+        }
+      ]
     },
     {
       path: '/announcements',
@@ -40,7 +47,7 @@ const router = new Router({
     {
       path: '/logout',
       component: () => import('./views/LogoutPage')
-    }
+    },
   ]
 })
 router.beforeEach((to, from, next) => {
