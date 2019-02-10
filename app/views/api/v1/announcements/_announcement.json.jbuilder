@@ -1,2 +1,2 @@
-json.extract! api_v1_announcement, :id, :created_at, :updated_at
+json.merge! api_v1_announcement.attributes
 json.url api_v1_announcement_url(api_v1_announcement, format: :json)
