@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :announcements,:assignments,:events, :members, :positions, :posts, :post_comments, :tasks
       post '/upload' => "upload#upload_profile_pic"
+      get 'members/get_id' => "members#get_member_id_from_user"
     end
   end
   post 'authenticate', to: 'authentication#authenticate'
