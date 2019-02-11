@@ -1,7 +1,19 @@
 <template>
     <div>
-        <h2>Anuncios recientes</h2>
-        <AnnouncementShow v-for="a in anuncios" :anuncio="a"/>
+        <h2 align = "center">Anuncios recientes</h2>
+        <div class="d-flex justify-between align-center mb-3">
+        <v-btn @click="all">Todos</v-btn>
+        <v-btn @click="none">Ninguno</v-btn>
+        </div>
+
+        <v-expansion-panel
+        v-model="panel"
+        expand
+        >
+        <v-expansion-panel-content v-for="(a,i) in anuncios" :key="i">
+            <AnnouncementShow :anuncio="a"/>
+        </v-expansion-panel-content>
+        </v-expansion-panel>
     </div>
 </template>
 
@@ -15,7 +27,9 @@
         },
         data () {
             return {
-                anuncios: {}
+                panel: [],
+                anuncios: {},
+                items: 10
             }
         },
         mounted() {
@@ -24,6 +38,15 @@
             .get(hostname+'/api/v1/announcements')
             .then( r => this.anuncios = r.data)
             .catch(error => console.log(error))
+        },
+        methods: {
+        all () {
+            this.panel = [...Array(this.items).keys()].map(_ => true)
+        },
+        // Reset the panel
+        none () {
+            this.panel = []
+        }
         }
     }
 </script>
