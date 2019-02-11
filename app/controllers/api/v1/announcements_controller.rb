@@ -40,6 +40,7 @@ class Api::V1::AnnouncementsController < ApiController
     @api_v1_announcement.destroy
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_api_v1_announcement

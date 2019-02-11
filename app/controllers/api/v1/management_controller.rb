@@ -11,4 +11,9 @@ class Api::V1::ManagementController < ApiController
       end
     end
   end
+
+  def announcement_by_members
+    Announcement.where(member_id: params[:member_id])
+  end
+
 end
