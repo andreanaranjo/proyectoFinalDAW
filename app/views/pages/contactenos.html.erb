@@ -1,7 +1,7 @@
 <div class="container">
 	<section>
 		<h2>Formulario</h2>
-		<form method="post">
+		<form action="https://formspree.io/ulloapiero@gmail.com" method="POST">
 			<div>
 				<label for="nombres">Nombres:</label>
 				<input type="text" placeholder="Nombres" id="nombres" name="nombres_usuario" />
@@ -19,12 +19,17 @@
 				<input type="text" placeholder="2123456 ó 0987654321" id="telefono" name="telefono_usuario" />
 			</div>
 			<div>
-				<label for="mensaje">Mensaje:</label>
-				<textarea id="mensaje" placeholder="Motivo de querer contactarse" name="mensaje_usuario"></textarea>
+				<label for="motivo">Motivo:</label>
+				<select>
+					<option value="hire">Contratos</option>
+					<option value="info">Informaci&oacute;n</option>
+					<option value="join">Quiero unirme</option>
+					<option value="otro">Otro</option>
+				</select>
 			</div>
 			<div>
-				<label for="imagen">Imagen de contacto:</label>
-				<input id="imagen" type="file" name="pic" accept="image/*">
+				<label for="mensaje">Mensaje:</label>
+				<textarea id="mensaje" placeholder="Cualquier duda, sugerencia o solicitud" name="mensaje_usuario"></textarea>
 			</div>
 			<div class="button">
 				<button onclick="notificar()" id="botonForm" type="submit">Enviar</button>
