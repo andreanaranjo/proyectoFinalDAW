@@ -53,8 +53,7 @@
     import EventShow from '@/components/EventShow'
     import AnnouncementShow from '@/components/AnnouncementShow'
     import MemberShow from '@/components/MemberShow'
-    import axios from 'axios';
-    
+
     export default {
         name: 'Dashboard',
         components: {
@@ -75,21 +74,22 @@
             listaMiembros: function() {return this.miembros.slice(0,3)}
         },
         mounted(){
-            let hostname = "http://localhost:3000"
-            axios
-            .get(hostname+'/api/v1/events')
+            let API = this.$store.getters.api
+
+            API.get('events')
             .then( response => this.eventos = response.data)
-            .catch(error => console.log(error))
-            axios
-            .get(hostname+'/api/v1/members')
+            .catch(error => {
+                console.error(error)
+                console.error(JSON.stringify(error.response.data))
+            })
+            API
+            .get("members")
             .then( r => { this.miembros = r.data})
             .catch(error => {console.log(error)})
-            axios
-            .get(hostname+'/api/v1/announcements')
+            API
+            .get("announcements")
             .then( r => this.anuncios = r.data)
             .catch(error => console.log(error))
-            
-            
         },
         
     }

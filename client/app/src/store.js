@@ -4,18 +4,17 @@ import axios from 'axios'
 import router from './router';
 Vue.use(Vuex)
 
+let host = "http://localhost:3000/"
 export default new Vuex.Store({
   state: {
-    token: null,
+    token: "",
     error: null,
     loading: false,
-    logged_in: false
+    logged_in: false,
   },
   mutations: {
     setToken (state, payload){
-      state.token = {
-        headers: `Bearer ${payload}`
-      }
+      state.token = payload
     },
     setError (state, payload){
       state.error = payload
@@ -29,24 +28,34 @@ export default new Vuex.Store({
   },
   actions: {
     userSignIn ({commit}, payload) {
-      let host = "http://localhost:3000"
+      
       commit('setLoading', true)
-      axios.post(host+"/authenticate",{
-        'user': payload.user,
+      axios.post(host+"authenticate",{
+        'username': payload.user,
         'password': payload.password
       }).then(response => {
         commit('setToken', response.data["auth_token"])
         // Guardar el token en localStorage.
-        localStorage.setItem('APIToken',JSON.stringify($state.token))
+        localStorage.setItem('APIToken',response.data["auth_token"])
         commit('setLoading', false)
         commit('setError', null)
         commit('setLoggedIn',true)
         router.push("/dashboard")
       }).catch(error => {
-        commit('setError', error.message)
+        commit('setError', error.message + " " + JSON.stringify(error.response.data))
         commit('setLoading', false)
+        commit('setLoggedIn',false)
       })
       
     }
   },
+  getters: {
+    api: (state) => {
+      return axios.create({
+        baseURL: host +'api/v1/',
+        timeout: 1000,
+        headers: {Authorization: `Bearer ${state.token}`}
+      })
+    }
+  }
 })

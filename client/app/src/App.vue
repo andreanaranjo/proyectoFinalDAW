@@ -44,7 +44,6 @@
 </template>
 
 <script>
-  
   export default {
     name: 'App',
     components: {
@@ -67,8 +66,20 @@
         // return $store.logged_in && item.requires_auth || !$store.logged_in && !item.requires_auth
         return this.$store.state.logged_in
       }
+    },
+    created () {
+      // Try to retrieve token from localStorage
+      if(Storage && localStorage.getItem('APIToken')){
+        this.$store.state.token = localStorage.getItem("APIToken")
+      } else if (!Storage) {
+        console.error("Este navegador no soporta Storage.")
+      } else {
+        console.log("No hay token guardado")
+      }
     }
 
     
   }
+
+  
 </script>
