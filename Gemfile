@@ -64,3 +64,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Gem for web app administration
 gem 'activeadmin'
 gem 'devise'
+
+#Gem to encrypt password
+gem 'bcrypt', '~> 3.1.7'
+
+#Gem to implement JWT token generation
+gem 'jwt'
+
+#The simple command gem is an easy way to create services
+gem 'simple_command'

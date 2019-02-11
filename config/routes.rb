@@ -8,4 +8,5 @@ Rails.application.routes.draw do
       resources :announcements,:assignments,:events, :members, :positions, :posts, :post_comments, :tasks
     end
   end
+  post 'authenticate', to: 'authentication#authenticate'
 end
