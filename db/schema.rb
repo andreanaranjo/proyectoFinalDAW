@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_11_173213) do
+ActiveRecord::Schema.define(version: 2019_02_11_192009) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -98,7 +98,9 @@ ActiveRecord::Schema.define(version: 2019_02_11_173213) do
     t.string "carrera"
     t.string "email"
     t.text "about_me"
+    t.integer "user_id"
     t.index ["position_id"], name: "index_members_on_position_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "positions", force: :cascade do |t|

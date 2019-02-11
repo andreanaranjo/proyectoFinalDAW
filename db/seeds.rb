@@ -5,9 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Position.create(name: 'Presidente', desc: 'Presidente del Club')
-Position.create(name: 'Vicepresidente', desc: 'Vicepresidente del Club')
-Position.create(name: 'Miembro', desc: 'Miembro regular del Club')
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+user1 = User.create!(username: 'vlaurido' , password: '123123123' , password_confirmation: '123123123') if Rails.env.development?
+user2 = User.create!(username: 'piero512',  password: '123123' , password_confirmation: '123123') if Rails.env.development?
+user3 = User.create!(username: 'test123',  password: '123123' , password_confirmation: '123123') if Rails.env.development?
+
+
+pres = Position.create(name: 'Presidente', desc: 'Presidente del Club')
+vicepre = Position.create(name: 'Vicepresidente', desc: 'Vicepresidente del Club')
+miembro = Position.create(name: 'Miembro', desc: 'Miembro regular del Club')
 
 # Add 2 events
 event1 = Event.create(
@@ -26,21 +33,27 @@ alex = Member.create(
   name: 'Alex Stefano',
   last_name: 'Subia Nugra',
   dob: Date.parse('1993-06-27'),
-  date_ingreso: Date.parse('2018-01-12')
+  date_ingreso: Date.parse('2018-01-12'),
+  position_id: pres.id,
+  user_id: user1.id
 )
 
 jimmy = Member.create(
   name: 'Jimmy Alexander',
   last_name: 'Almeida Loor',
   dob: Date.parse('1994-12-12'),
-  date_ingreso: Date.parse('2017-04-24')
+  date_ingreso: Date.parse('2017-04-24'),
+  position_id: miembro.id,
+  user_id: user2.id
 )
 
 valeria = Member.create(
   name: 'Valeria Carolina',
   last_name: 'Gomez Vaca',
   dob: Date.parse('1999-09-24'),
-  date_ingreso: Date.parse('2018-05-07')
+  date_ingreso: Date.parse('2018-05-07'),
+  position_id: miembro.id,
+  user_id: user3.id
 )
 
 # Add posts
@@ -110,6 +123,3 @@ Assignment.create(
   task_id: reserva_aula.id
 )
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-User.create!(username: 'vlaurido' , password: '123123123' , password_confirmation: '123123123') if Rails.env.development?
-User.create!(username: 'piero512',  password: '123123' , password_confirmation: '123123') if Rails.env.development?
