@@ -57,7 +57,8 @@
         { title: 'Eventos', icon: 'calendar_today', to: "/events", requires_auth: true},
         { title: 'Perfil', icon: 'account_box',to:"/profile", requires_auth: true},
         { title: 'Iniciar sesión', icon: "lock_open", to:"/login", requires_auth: false},
-        { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true}
+        { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true},
+        { title: 'Contacto', icon: "email", to: "/contact", requires_auth: false}
         ]
       }
     },

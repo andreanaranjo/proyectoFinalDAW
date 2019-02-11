@@ -49,6 +49,10 @@ const router = new Router({
       path: '/logout',
       component: () => import('./views/LogoutPage')
     },
+    {
+      path: '/contact',
+      component: () => import('./views/Contact')
+    }
   ]
 })
 router.beforeEach((to, from, next) => {

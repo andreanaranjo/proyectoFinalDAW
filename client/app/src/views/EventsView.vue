@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h2>TODO: Hacer esto bonito</h2>
         <ol>
             <li v-for='event in eventos'>
                 <EventShow :event="event"/>

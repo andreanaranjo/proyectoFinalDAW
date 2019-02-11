@@ -23,6 +23,12 @@
                     required
                     ></v-text-field>
 
+                    <v-combobox
+                      v-model="select"
+                      :items="items"
+                      label="Elija un motivo"
+                    ></v-combobox>
+
                     <v-textarea
                     name="comment"
                     box
@@ -70,6 +76,7 @@
         v => !!v || 'El e-mail es requerido',
         v => /.+@.+/.test(v) || 'El correo debe ser válido'
       ],
+      items: ['Evento', 'Más información', 'Unirte', 'Otro']
     }),
 
     methods: {
