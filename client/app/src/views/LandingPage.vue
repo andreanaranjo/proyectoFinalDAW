@@ -1,3 +1,3 @@
 <template>
-    <h2>Placeholder</h2>
+    <h2>LandingPage Placeholder</h2>
 </template>

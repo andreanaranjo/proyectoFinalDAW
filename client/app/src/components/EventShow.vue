@@ -1,7 +1,6 @@
 <template>
     <div>
-        <p>{{event.name}}</p>
-        <p>{{event.desc}}</p>
+        <h3 class="headline mb-0">{{event.name}}</h3>
         <p>Día del evento: {{nicedate}}</p>
     </div>
 </template>

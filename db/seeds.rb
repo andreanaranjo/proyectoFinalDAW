@@ -111,4 +111,5 @@ Assignment.create(
 )
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-User.create!(username: 'vlaurido' , password: '123123123' , password_confirmation: '123123123')
+User.create!(username: 'vlaurido' , password: '123123123' , password_confirmation: '123123123') if Rails.env.development?
+User.create!(username: 'piero512',  password: '123123' , password_confirmation: '123123') if Rails.env.development?
