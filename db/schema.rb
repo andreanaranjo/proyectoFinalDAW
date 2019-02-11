@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_02_10_205414) do
-=======
-ActiveRecord::Schema.define(version: 2019_02_09_212057) do
->>>>>>> 5958c062b083e0d569123803e07639f788db6c0a
+ActiveRecord::Schema.define(version: 2019_02_10_205922) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -54,23 +50,11 @@ ActiveRecord::Schema.define(version: 2019_02_09_212057) do
   create_table "assignments", force: :cascade do |t|
     t.integer "member_id"
     t.integer "task_id"
+    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "score"
     t.index ["member_id"], name: "index_assignments_on_member_id"
     t.index ["task_id"], name: "index_assignments_on_task_id"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.integer "post_id"
-    t.string "author"
-    t.integer "member_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "title"
-    t.index ["member_id"], name: "index_comments_on_member_id"
-    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -79,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_212057) do
     t.datetime "due_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tipo"
   end
 
   create_table "members", force: :cascade do |t|
@@ -86,9 +71,12 @@ ActiveRecord::Schema.define(version: 2019_02_09_212057) do
     t.string "last_name"
     t.date "dob"
     t.date "date_ingreso"
+    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "position_id"
+    t.string "carrera"
+    t.string "email"
+    t.text "about_me"
     t.index ["position_id"], name: "index_members_on_position_id"
   end
 
@@ -99,12 +87,24 @@ ActiveRecord::Schema.define(version: 2019_02_09_212057) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "post_id"
+    t.string "author"
+    t.integer "member_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_post_comments_on_member_id"
+    t.index ["post_id"], name: "index_post_comments_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "member_id"
     t.text "content"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.index ["member_id"], name: "index_posts_on_member_id"
   end
 
@@ -113,9 +113,9 @@ ActiveRecord::Schema.define(version: 2019_02_09_212057) do
     t.text "desc"
     t.datetime "deadline"
     t.integer "event_id"
+    t.boolean "completed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "completed"
     t.index ["event_id"], name: "index_tasks_on_event_id"
   end
 
