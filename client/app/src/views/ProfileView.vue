@@ -6,10 +6,7 @@
     
     <v-layout align-center justify-space-around row fill-height>
         
-        <v-flex
-        xs12
-        md4
-        >
+        <v-flex xs12 md4>
         <material-card class="v-card-profile">
             <v-avatar
             slot="offset"
@@ -32,10 +29,9 @@
                 color="success"
                 round
                 class="font-weight-light"
-                href = "http://localhost:8080/profile/edit"
                 >Editar Perfil
-            </v-btn>
-        </router-link>
+                </v-btn>
+            </router-link>
         
     </v-card-text>
 </material-card>
@@ -48,7 +44,5 @@
 </template>
 
 <script>
-    export default {
-        //
-    }
+    
 </script>

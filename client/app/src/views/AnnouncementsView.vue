@@ -33,9 +33,9 @@
             }
         },
         mounted() {
-            let hostname = "http://localhost:3000"
-            axios
-            .get(hostname+'/api/v1/announcements')
+            let API = this.$store.getters.api
+            API
+            .get('announcements')
             .then( r => this.anuncios = r.data)
             .catch(error => console.log(error))
         },
