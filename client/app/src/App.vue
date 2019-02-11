@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <v-navigation-drawer class="blue lighten-3" dark fixed app v-model="drawer" clipped>
+    <v-navigation-drawer class="blue lighten-3" dark fixed app v-model="drawer" clipped v-show="isAuthenticated" disable-resize-watcher="true">
       
       <v-list>
         <v-list-tile
         v-for="item in items"
         :key="item.title"
         @click=""
-        v-show="isAuthenticated && item.requires_auth || !isAuthenticated && !item.requires_auth"
+        v-show="isAuthenticated && item.requires_auth || !isAuthenticated && !item.requires_auth || item.always_show"
         >
         <v-list-tile-action>
           <v-icon>{{ item.icon }}</v-icon>
@@ -24,7 +24,7 @@
       </v-list-tile>
     </v-list>
   </v-navigation-drawer>
-  <v-toolbar dark color="primary" flat app absolute clipped-left>
+  <v-toolbar dark color="primary" flat app absolute clipped-left v-show="isAuthenticated">
     <!--Icono para abrir el nav drawer-->
     
     
@@ -52,13 +52,13 @@
       return {
         drawer: false,
         items: [
-        { title: 'Dashboard', icon: 'dashboard', to: "/dashboard", requires_auth: true },
-        { title: 'Anuncios', icon: 'notifications_active', to: "/announcements" , requires_auth: true},
-        { title: 'Eventos', icon: 'calendar_today', to: "/events", requires_auth: true},
-        { title: 'Perfil', icon: 'account_box',to:"/profile", requires_auth: true},
-        { title: 'Iniciar sesión', icon: "lock_open", to:"/login", requires_auth: false},
-        { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true},
-        { title: 'Contacto', icon: "email", to: "/contact", requires_auth: false}
+        { title: 'Dashboard', icon: 'dashboard', to: "/dashboard", requires_auth: true, always_show: false },
+        { title: 'Anuncios', icon: 'notifications_active', to: "/announcements" , requires_auth: true, always_show: false},
+        { title: 'Eventos', icon: 'calendar_today', to: "/events", requires_auth: true, always_show: false},
+        { title: 'Perfil', icon: 'account_box',to:"/profile", requires_auth: true, always_show: false},
+        { title: 'Iniciar sesión', icon: "lock_open", to:"/login", requires_auth: false,always_show: false},
+        { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true, always_show: false},
+        { title: 'Contacto', icon: "email", to: "/contact", requires_auth: false,always_show: true}
         ]
       }
     },

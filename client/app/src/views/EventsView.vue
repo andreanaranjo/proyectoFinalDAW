@@ -21,10 +21,8 @@
 </template>
 
 <script>
-    import axios from 'axios';
     import EventShow from '@/components/EventShow';
 
-    let hostname = 'http://localhost:3000' // Añadí el hostname porque la API está hosteada en un puerto distinto al dominio local.
     export default {
         name: 'EventsView',
         components: {
@@ -36,8 +34,9 @@
             }
         },
         mounted() {
-            axios
-            .get(hostname+'/api/v1/events')
+            let API = this.$store.getters.api
+            API
+            .get('events')
             .then( response => this.eventos = response.data)
             .catch(error => console.log(error))
             
