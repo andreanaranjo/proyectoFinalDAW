@@ -1,0 +1,43 @@
+
+		<div>
+			<br>
+		</div>
+		<h2 class="w3-center">SuitCase 2018</h2>
+		<div class="w3-content w3-display-container">
+			<%= image_tag("i3week.jpg", :class => "mySlides") %>
+			<%= image_tag("Djam.jpg", :class => "mySlides") %>
+			<%= image_tag("suitcase-members.jpg", :class => "mySlides") %>
+			<%= image_tag("feria.jpg", :class => "mySlides") %>
+
+			<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+			<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+		</div>
+
+		<object width="400" height="50" data="./../img/snailrunner1.swf"></object>
+
+	<script>
+		function myFunction() {
+		    var x = document.getElementById("myTopnav");
+		    if (x.className === "topnav") {
+		        x.className += " responsive";
+		    } else {
+		        x.className = "topnav";
+		    }
+		}
+		var slideIndex = 1;
+		showDivs(slideIndex);
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+		function showDivs(n) {
+		  var i;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = x.length}
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";  
+		  }
+		  x[slideIndex-1].style.display = "block";  
+		}
+	</script>
+	</body>
