@@ -43,26 +43,12 @@
       <% link_to "Â¿Quienes Somos", quienes_somos_path%>
 
       <a href="/"> Suitcase</a>
-      <a href="/quienes_somos">Â¿Quienes somos?</a>
-      <a href="/que_hacemos">Â¿Que hacemos?</a>
-      <a href="/proximos_eventos">Proximos Eventos</a>
+      <a href="/quienes_somos">¿Qui&eacute;nes somos?</a>
+      <a href="/que_hacemos">¿Qu&eacute; hacemos?</a>
+      <a href="/proximos_eventos">Pr&oacute;ximos Eventos</a>
       <a href="/contactenos">Contacto</a>
-      <a href="/admins/sign_in">Iniciar Sesion</a>
-      <% if admin_signed_in? %>
-        <a href="/admins/sign_in">Usuario</a>
-        <a href="/admins/sign_in">Evento</a>
-      <% else %>
-        <a href="/admins/sign_in">Iniciar Sesion</a>
-      <% end %>
-      
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
     </div>
-    <%= link_to "Cerrar Sesion", destroy_admin_session_path, method: :delete%>
-    <% flash.each do |name, msg|%>
-      
-    <% end %>
+
     <%= yield %>
     </div>
   </body>
