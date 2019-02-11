@@ -22,6 +22,9 @@ export default new Vuex.Store({
     },
     setLoading (state, payload){
       state.loading = payload
+    },
+    setLoggedIn(state, payload){
+      state.logged_in = payload
     }
   },
   actions: {
@@ -37,24 +40,13 @@ export default new Vuex.Store({
         localStorage.setItem('APIToken',JSON.stringify($state.token))
         commit('setLoading', false)
         commit('setError', null)
+        commit('setLoggedIn',true)
         router.push("/dashboard")
       }).catch(error => {
         commit('setError', error.message)
         commit('setLoading', false)
       })
-      /*
-      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
-      .then(firebaseUser => {
-        commit('setUser', {email: firebaseUser.user.email})
-        commit('setLoading', false)
-        commit('setError', null)
-        router.push('/home')
-      })
-      .catch(error => {
-        commit('setError', error.message)
-        commit('setLoading', false)
-      })
-      */
+      
     }
-  }
+  },
 })

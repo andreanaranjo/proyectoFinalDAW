@@ -7,7 +7,7 @@
         v-for="item in items"
         :key="item.title"
         @click=""
-        v-if="$store.logged_in && item.requires_auth || !$store.logged_in && !item.requires_auth"
+        v-show="isAuthenticated && item.requires_auth || !isAuthenticated && !item.requires_auth"
         >
         <v-list-tile-action>
           <v-icon>{{ item.icon }}</v-icon>
@@ -61,6 +61,14 @@
         { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true}
         ]
       }
+    },
+    computed:{
+      isAuthenticated () {
+        // return $store.logged_in && item.requires_auth || !$store.logged_in && !item.requires_auth
+        return this.$store.state.logged_in
+      }
     }
+
+    
   }
 </script>
