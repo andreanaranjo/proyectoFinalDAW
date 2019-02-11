@@ -45,8 +45,13 @@ export default new Vuex.Store({
         commit('setError', error.message + " " + JSON.stringify(error.response.data))
         commit('setLoading', false)
         commit('setLoggedIn',false)
-      })
-      
+      }) 
+    },
+    userLogout ({commit}){
+      commit('setToken',"")
+      commit('setLoggedIn', false)
+      localStorage.removeItem('APIToken')
+      router.push("/")
     }
   },
   getters: {

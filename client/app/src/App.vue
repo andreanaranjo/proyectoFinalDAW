@@ -71,6 +71,7 @@
       // Try to retrieve token from localStorage
       if(Storage && localStorage.getItem('APIToken')){
         this.$store.state.token = localStorage.getItem("APIToken")
+        this.$store.state.logged_in = true
       } else if (!Storage) {
         console.error("Este navegador no soporta Storage.")
       } else {
