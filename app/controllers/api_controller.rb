@@ -1,19 +1,19 @@
 class ApiController < ActionController::API
-    before_action :set_default_response_format
-    
-    protected
-    
-    def set_default_response_format
-        request.format = :json
-    end
+  before_action :set_default_response_format
 
-    before_action :authenticate_request
-    attr_reader :current_user
+  protected
 
-    private
+  def set_default_response_format
+    request.format = :json
+  end
 
-    def authenticate_request
+  before_action :authenticate_request
+  attr_reader :current_user
+
+  private
+
+  def authenticate_request
     @current_user = AuthorizeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
-    end
+    render json: {error: 'Not Authorized'}, status: 401 unless @current_user
+  end
 end

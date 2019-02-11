@@ -74,7 +74,7 @@
             listaMiembros: function() {return this.miembros.slice(0,3)}
         },
         mounted(){
-            let API = this.$store.getters.api
+            var API = this.$store.getters.api
 
             API.get('events')
             .then( response => this.eventos = response.data)

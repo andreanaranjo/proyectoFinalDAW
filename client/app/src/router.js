@@ -23,13 +23,11 @@ const router = new Router({
       path: '/profile',
       component: () => import('./views/ProfileView'),
       meta: {requiresAuth: true},
-      children: [
-        {
-        path:'/edit',
-        component: () => import('./views/EditProfileView'),
-        meta: {requiresAuth: true}
-        }
-      ]
+    },
+    {
+      path:'/profile/edit',
+      component: () => import('./views/EditProfileView'),
+      meta: {requiresAuth: true}
     },
     {
       path: '/announcements',
