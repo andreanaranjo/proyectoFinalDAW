@@ -73,7 +73,9 @@ class Api::V1::ManagementController < ApiController
         cumplidas: num_assignments_task_completed,
         pendientes: num_assignments_task_total - num_assignments_task_completed
       }, calificacion_promedio: promedio_calificaciones,
-      anuncios_publicados: anuncios_publicados
+      anuncios_publicados: anuncios_publicados,
+      anuncios_totales: Announcement.count,
+      eventos_totales: Event.count
     }
 
   end
