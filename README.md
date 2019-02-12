@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hola, esta es una aplicación web desarrollada para el curso de Desarrollo de Aplicaciones Web dictado en ESPOL FIEC.
 
-Things you may want to cover:
+Para utilizar este repo necesitas ruby 2.6.0 y Rails 5.2.2
 
-* Ruby version
+Para hacer deploy del front-end necesitas nodejs y npm
 
-* System dependencies
+Pasos para configurar el front-end para deployment:
 
-* Configuration
+* Hacer npm install en client/app
+* Hacer npm run build en el mismo directorio anterior
 
-* Database creation
+Los archivos se colocarán directamente donde serán servidos por Rails dev server (o en caso de mover Rails a producción, por el servidor responsable), en el directorio /public/app y serán minificados
 
-* Database initialization
+Para configurar el proyecto de Rails se necesita hacer lo siguiente:
 
-* How to run the test suite
+* bundle install
+* rails db:schema:load db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+Para hostear un servidor development de Rails, se ejecuta rails s
 
-* Deployment instructions
 
-* ...
