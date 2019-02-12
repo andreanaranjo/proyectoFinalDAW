@@ -36,6 +36,25 @@ class Api::V1::ManagementController < ApiController
     render :json => array3
   end
 
+  def get_events_tree
+    hash = {name: "Suitcase"}
+    hash["children"] = []
+    Event.all.each do |event|
+      h2 = {'name' => event.name, "children" =>[]}
+      Task.where(event_id: event.id).each do |task|
+        h3 = {'name' => task.name, "children" => [] }
+        Member.find(Assignment.where(task_id: task.id).map { |assignment| assignment.member_id }).each do |member|
+          var = {"name" => member.name}
+          h3["children"].append var
+        end
+        h2["children"].append h3
+      end
+      hash["children"].append h2
+    end
+
+    render :json => hash
+  end
+
   def get_users_registered_event
     render :json => Task.where(event_id: params[:event_id]).joins('join assignments on task.id = assignments.task_id ')
   end

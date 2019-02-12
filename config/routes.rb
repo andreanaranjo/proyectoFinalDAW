@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get 'get_registered_events/:member_id' => "management#get_registered_events"
       get 'get_member_metrics/:member_id' => "management#get_member_metrics"
       get 'get_tasks_event/:event_id' => "management#get_tasks_for_event"
+      get 'get_events_tree/' => "management#get_events_tree"
       resources :announcements,:assignments,:events, :members, :positions, :posts, :post_comments, :tasks
     end
   end
