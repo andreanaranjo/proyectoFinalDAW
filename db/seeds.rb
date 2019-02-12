@@ -54,7 +54,7 @@ alex = Member.create(
   position_id: pres.id,
   carrera: 'Licenciatura en Turismo',
   email: '',
-  about_me: '',
+  about_me: 'Presidente del club Suitcase. Comprometido con su mejora continua.',
   user_id: user1.id
 )
 
@@ -66,7 +66,7 @@ jimmy = Member.create(
   position_id: vicepre.id,
   carrera: 'Licenciatura en Turismo',
   email: '',
-  about_me: '',
+  about_me: 'Vicepresidente del club Suitcase. Persona extrovertida que disfruta mucho leer.',
   user_id: user2.id
 )
 
@@ -78,7 +78,7 @@ andrew = Member.create(
   position_id: tesorero.id,
   carrera: 'Ingenieria en Logistica y Transporte',
   email: '',
-  about_me: '',
+  about_me: 'Tesorero del club Suitcase. Comprometido con la honestidad y la transparencia de fondos.',
   user_id: user3.id
 )
 
