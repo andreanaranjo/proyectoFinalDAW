@@ -43,7 +43,11 @@ class Api::V1::MembersController < ApiController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_api_v1_member
+      begin
       @api_v1_member = Member.find(params[:id])
+      rescue
+
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

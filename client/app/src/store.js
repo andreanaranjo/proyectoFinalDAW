@@ -4,7 +4,8 @@ import axios from 'axios'
 import router from './router';
 Vue.use(Vuex)
 
-let host = "http://localhost:3000/"
+let host = process.env.NODE_ENV === 'production' ? '' : "http://localhost:3000/"
+
 export default new Vuex.Store({
   state: {
     token: "",

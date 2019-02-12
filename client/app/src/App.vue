@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer class="blue lighten-3" dark fixed app v-model="drawer" clipped v-show="isAuthenticated" disable-resize-watcher="true">
+    <v-navigation-drawer class="blue lighten-3" dark fixed app v-model="drawer" clipped v-show="isAuthenticated" :disable-resize-watcher="true">
       
       <v-list>
         <v-list-tile

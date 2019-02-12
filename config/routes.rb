@@ -18,8 +18,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
-      resources :announcements,:assignments,:events, :members, :positions, :posts, :post_comments, :tasks
+      get 'announcements/by/:member_id' => "management#announcement_by_members"
+      get 'tasks/by/:member_id' => "management#tasks_by_members"
       post '/upload' => "upload#upload_profile_pic"
+      get 'get_id' => "management#get_member_id_from_user"
+      get 'get_registered_events/:member_id' => "management#get_registered_events"
+      get 'get_member_metrics/:member_id' => "management#get_member_metrics"
+      get 'get_tasks_event/:event_id' => "management#get_tasks_for_event"
+      get 'get_events_tree/' => "management#get_events_tree"
+      resources :announcements,:assignments,:events, :members, :positions, :posts, :post_comments, :tasks
     end
   end
   post 'authenticate', to: 'authentication#authenticate'

@@ -95,7 +95,8 @@ bocaditos = Task.create(
     '- Etc...',
   deadline: DateTime.parse('2018-09-11 13:30:00'),
   completed: false,
-  event_id: event2.id
+  event_id: event2.id,
+  user_id: jimmy.id
 )
 
 reserva_aula = Task.create(
@@ -104,7 +105,8 @@ reserva_aula = Task.create(
   'en el uso de las herramientas de prototipado',
   deadline: DateTime.parse('2018-09-13 00:00:00'),
   completed: false,
-  event_id: event1.id
+  event_id: event1.id,
+  user_id: jimmy.id
 )
 
 # Add task asignees
