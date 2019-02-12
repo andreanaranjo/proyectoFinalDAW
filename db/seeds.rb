@@ -153,12 +153,20 @@ post3 = Post.create(
 
 # Add comments to post!
 PostComment.create(
+  title: 'Buena experiencia',
+  content: 'El evento fue muy organizado y pudimos aprender mucho sobre organizacion y logistica.',
+  author: alex.name,
+  member_id: andrew.id,
+  post_id: post1.id
+)
+
+PostComment.create(
   title: 'Felicitaciones!',
   content: 'Felicitaciones a los ganadores. '\
 'Todos los equipos hicieron un gran trabajo!',
   author: alex.name,
   member_id: pedro.id,
-  post_id: post3.id
+  post_id: post2.id
 )
 
 PostComment.create(
