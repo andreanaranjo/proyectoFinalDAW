@@ -13,11 +13,11 @@ class Api::V1::ManagementController < ApiController
   end
 
   def announcement_by_members
-    Announcement.where(member_id: params[:member_id])
+    render :json => Announcement.where(member_id: params[:member_id])
   end
 
   def get_members_assigned_to_event
-    Member.find(Assigment.where(event_id: params[:member_id]))
+    render :json => Member.find(Assigment.where(event_id: params[:member_id]))
   end
 
   def get_registered_events
@@ -37,7 +37,7 @@ class Api::V1::ManagementController < ApiController
   end
 
   def get_users_registered_event
-    Task.where(event_id: params[:event_id])
+    render :json => Task.where(event_id: params[:event_id]).joins('join assignments on task.id = assignments.task_id ')
   end
 
   def get_member_metrics
@@ -57,5 +57,9 @@ class Api::V1::ManagementController < ApiController
       anuncios_publicados: anuncios_publicados
     }
 
+  end
+
+  def get_tasks_for_event
+    render :json => Task.where(event_id: params[:event_id])
   end
 end
