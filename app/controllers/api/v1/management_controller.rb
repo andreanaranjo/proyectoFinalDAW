@@ -73,12 +73,40 @@ class Api::V1::ManagementController < ApiController
         cumplidas: num_assignments_task_completed,
         pendientes: num_assignments_task_total - num_assignments_task_completed
       }, calificacion_promedio: promedio_calificaciones,
-      anuncios_publicados: anuncios_publicados
+      anuncios_publicados: anuncios_publicados,
+      anuncios_totales: Announcement.count,
+      eventos_totales: Event.count
     }
 
   end
 
   def get_tasks_for_event
     render :json => Task.where(event_id: params[:event_id])
+  end
+
+  def generate_report
+    member_and_avg_all = "SELECT assignments.member_id as id, AVG(assignments.score) as promedio from assignments group by member_id;"
+    name_and_count_of_tasks_completed = "SELECT assignments.member_id as id, COUNT(*) as count from assignments join tasks on tasks.id = assignments.task_id where tasks.completed = 1 group by assignments.member_id;"
+    member_and_event_completed = "SELECT assignments.member_id as id, COUNT(*) as count from assignments join tasks on tasks.id = assignments.task_id where tasks.completed = 1 group by tasks.event_id"
+    relation = Assignment.joins('join tasks on tasks.id = assignments.task_id')
+    num_assignments_task_completed = relation.where('tasks.completed = true').count
+    num_assignments_task_total = relation.count
+    hash = {
+      :miembros_actuales => Member.count,
+      :total_eventos => Event.count,
+      :anuncios_totales => Announcement.count,
+      :directiva => {
+        :Presidente => Member.where(position_id: Position.where(name: "Presidente").first.id).first.name,
+        :Vicepresidente => Member.where(position_id: Position.where(name: "Vicepresidente").first.id).first.name,
+        :Tesorero => Member.where(position_id: Position.where(name: "Tesorero").first.id).first.name
+      },
+      :destacados => {
+        :top_promedio => Member.find(ActiveRecord::Base.connection.execute(member_and_avg_all).max {|a,b| a["promedio"] <=> b["promedio"]}["id"]).name,
+        :top_tareas => Member.find(ActiveRecord::Base.connection.execute(name_and_count_of_tasks_completed).max {|a,b| a["count"] <=> b["count"]}["id"]).name,
+        :top_eventos => Member.find(ActiveRecord::Base.connection.execute(member_and_event_completed).max {|a,b| a["count"] <=> b["count"]}["id"]).name
+      },
+      :tareas => {:cumplidas => num_assignments_task_completed, :pendientes => num_assignments_task_total - num_assignments_task_completed }
+    }
+    render :json => hash
   end
 end
