@@ -1,11 +1,12 @@
 <template>
     <div>
         <h2 align = "center">Anuncios recientes</h2>
+        <br>
         <div class="d-flex justify-between align-center mb-3">
         <v-btn @click="all">Todos</v-btn>
         <v-btn @click="none">Ninguno</v-btn>
         </div>
-
+        <br>
         <v-expansion-panel
         v-model="panel"
         expand
@@ -14,6 +15,10 @@
             <AnnouncementShow :anuncio="a"/>
         </v-expansion-panel-content>
         </v-expansion-panel>
+        <br>
+        <h2 align = "center">Mis anuncios</h2>
+        <br>
+        <p>Poner aqui crud de anuncios</p>
     </div>
 </template>
 
@@ -29,7 +34,7 @@
             return {
                 panel: [],
                 anuncios: {},
-                items: 10
+                items: 5
             }
         },
         mounted() {

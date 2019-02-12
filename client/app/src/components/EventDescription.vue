@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card height = "300">
         <v-img
         src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
         aspect-ratio="2.75"
@@ -11,19 +11,21 @@
             </div>
         </v-card-title>
         <v-card-actions>
-        <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-        <v-btn slot="activator" color="orange" dark>Descripción</v-btn>
-            <v-card>
-                <v-toolbar dark color="primary">
-                <v-btn icon dark @click="dialog = false">
-                    <v-icon>close</v-icon>
-                </v-btn>
-                <v-toolbar-title>Descripción</v-toolbar-title>
-                </v-toolbar>
-                <br>
-                <p>{{event.desc}}</p>
-            </v-card>
-        </v-dialog>
+        <v-layout align-center justify-space-around row fill-height>
+            <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+            <v-btn slot="activator" color="orange" dark>Descripción</v-btn>
+                <v-card>
+                    <v-toolbar dark color="primary">
+                    <v-btn icon dark @click="dialog = false">
+                        <v-icon>close</v-icon>
+                    </v-btn>
+                    <v-toolbar-title>Descripción</v-toolbar-title>
+                    </v-toolbar>
+                    <br>
+                    <p>{{event.desc}}</p>
+                </v-card>
+            </v-dialog>
+        </v-layout>
         </v-card-actions>
     </v-card>
 </template>
@@ -45,3 +47,4 @@
         }
     }
 </script>
+
