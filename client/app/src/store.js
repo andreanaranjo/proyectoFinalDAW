@@ -31,7 +31,7 @@ export default new Vuex.Store({
     userSignIn ({commit}, payload) {
       
       commit('setLoading', true)
-      axios.post(host+"authenticate",{
+      axios.post(host+"/authenticate",{
         'username': payload.user,
         'password': payload.password
       }).then(response => {
@@ -58,7 +58,7 @@ export default new Vuex.Store({
   getters: {
     api: (state) => {
       return axios.create({
-        baseURL: host +'api/v1/',
+        baseURL: host +'/api/v1/',
         timeout: 1000,
         headers: {Authorization: `Bearer ${state.token}`}
       })

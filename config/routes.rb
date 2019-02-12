@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   #get 'pages/home'
-
+  get 'app/' => redirect('app/index.html')
   root 'pages#home'
   get 'quienes_somos'  => 'pages#quienes_somos'
   get 'home' => 'pages#home'
