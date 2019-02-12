@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import LandingPage from './views/LandingPage'
 import store from './store'
+import NotFound from "@/components/NotFound"
 Vue.use(Router)
 
 const router = new Router({
@@ -50,6 +51,10 @@ const router = new Router({
     {
       path: '/contact',
       component: () => import('./views/Contact')
+    },
+    {
+      path: "*",
+      component: NotFound
     }
   ]
 })
