@@ -27,7 +27,7 @@
 <script>
     import AnnouncementShow from '@/components/AnnouncementShow'
     import MyAnnouncementsShow from '@/components/MyAnnouncementsShow'
-    import axios from 'axios';
+
     export default {
         name: 'AnnouncementsView',
         components: {
@@ -50,7 +50,7 @@
             .then( r => this.anuncios = r.data)
             .catch(error => console.log(error))
             API
-            .get('announcements/by/')
+            .get(`anuncios/by/${this.$store.state.member_id}`)
             .then( response => this.anunciosMiembro = response.data)
             .catch(error => console.log(error))
         },

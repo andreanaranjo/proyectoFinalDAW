@@ -78,6 +78,10 @@
       } else {
         console.log("No hay token guardado")
       }
+
+      this.$store.getters.api.get('get_id').then( response => {
+        this.$store.state.user_id = response.data["member_id"]
+      })
     }
 
     

@@ -30,7 +30,10 @@
         },
         mounted(){
             let API = this.$store.getters.api
-            API.get('')
+            API.get(`get_tasks_event/${this.event.id}`).then(response => {
+                this.tasks = response.data
+            })
+            
         }
     }
 </script>

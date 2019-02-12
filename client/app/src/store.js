@@ -12,6 +12,7 @@ export default new Vuex.Store({
     error: null,
     loading: false,
     logged_in: false,
+    member_id: 0,
   },
   mutations: {
     setToken (state, payload){
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
     setLoggedIn(state, payload){
       state.logged_in = payload
+    },
+    setMemberID(state,payload){
+      state.member_id = payload
     }
   },
   actions: {
@@ -46,6 +50,9 @@ export default new Vuex.Store({
         commit('setError', error.message + " " + JSON.stringify(error.response.data))
         commit('setLoading', false)
         commit('setLoggedIn',false)
+      })
+      this.getters.api.get('get_id').then(response => {
+        commit('setMemberID', response.data["member_id"])
       }) 
     },
     userLogout ({commit}){
