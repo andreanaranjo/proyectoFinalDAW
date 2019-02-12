@@ -104,8 +104,8 @@ class Api::V1::ManagementController < ApiController
         :top_promedio => Member.find(ActiveRecord::Base.connection.execute(member_and_avg_all).max {|a,b| a["promedio"] <=> b["promedio"]}["id"]).name,
         :top_tareas => Member.find(ActiveRecord::Base.connection.execute(name_and_count_of_tasks_completed).max {|a,b| a["count"] <=> b["count"]}["id"]).name,
         :top_eventos => Member.find(ActiveRecord::Base.connection.execute(member_and_event_completed).max {|a,b| a["count"] <=> b["count"]}["id"]).name
-      },
-      :tareas => {:cumplidas => num_assignments_task_completed, :pendientes => num_assignments_task_total - num_assignments_task_completed }
+      }
+      # :tareas => {:cumplidas => num_assignments_task_completed, :pendientes => num_assignments_task_total - num_assignments_task_completed }
     }
     render :json => hash
   end
