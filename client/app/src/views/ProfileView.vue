@@ -16,12 +16,11 @@
             <img src="https://randomuser.me/api/portraits/men/20.jpg" class="image" alt="lorem" width="100%" height="100%">
         </v-avatar>
         <v-card-text class="text-xs-center">
-            <h6 class="category text-gray font-weight-thin mb-3">Posicion</h6>
+            <h4 class="card-title font-weight-light">{{miembro.name}} {{miembro.last_name}}</h4>
             <br>
-            <h4 class="card-title font-weight-light">Nombre</h4>
+            <p class="card-description font-weight-light">{{miembro.about_me}}</p>
             <br>
-            <p class="card-description font-weight-light">About me</p>
-            <br>
+            <p class="card-description font-weight-light">{{miembro.carrera}}</p>
             <router-link to="/profile/edit" >
                 <v-btn
                 color="success"
@@ -62,7 +61,7 @@
                     <v-card color="blue" dark>
                         <v-card-title primary class="title">Eventos Colaborados</v-card-title>
                         <DoughnutChart 
-                            :percent="datosMiembro.eventos_participados/datos.total_eventos *100"
+                            :percent="datos.eventos_participados/datos.total_eventos *100"
                             :visibleValue="true"
                             :value="datos.eventos_participados"
                             :max="datos.total_eventos"
@@ -107,7 +106,7 @@
         name: 'Profile',
         data() {
             return {
-                miembros: [],
+                miembro: 0,
                 id: 0,
                 datos: {"eventos_participados": 16,
                 "total_eventos": 20,
@@ -115,7 +114,6 @@
                 "calificación_promedio": 2.8,
                 "anuncios_publicados":4,
                 "anuncios_totales":30},
-                datosMember: ""
             }
         },
         components: {
@@ -123,8 +121,8 @@
         },
         computed: {
             listaMiembros: function() {return this.miembros},
-            idMember: function() {return this.id}, 
-        
+            idMember: function() {return this.id},
+            datosMiembro: function() {return this.dataMiembro}
         },
         mounted(){
             var API = this.$store.getters.api
@@ -132,11 +130,12 @@
             .then( response => {this.id = response.data})
             .catch(error => {console.log(error)})
             API
-            .get(`/get_member_metrics/${idMember.member_id}`)
-            .then( r => { this.datosMiembro = r.data})
+            .get(`members/${this.$store.state.member_id}`)
+            .then( r => { this.miembro = r.data})
             .catch(error => {console.log(error)})
-            API.get("members")
-            .then( response => {this.miembros = response.data})
+            API
+            .get(`get_member_metrics/${this.$store.state.member_id}`)
+            .then( respuesta => { this.dataMiembro = respuesta.data})
             .catch(error => {console.log(error)})
         }
     }
