@@ -199,6 +199,14 @@ reserva_coliseo = Task.create(
   event_id: event1.id
 )
 
+invitaciones = Task.create(
+  name: 'Invitar Universidades',
+  desc: 'Se necesita que alguien envie las respectivas invitaciones a las Universidades.',
+  deadline: DateTime.parse('2018-10-20 00:00:00'),
+  completed: false,
+  event_id: event1.id
+)
+
 #For event2 (I3Week)
 reserva_STEM = Task.create(
   name: 'Reservar el STEM (Edificio Post-grados mecanica)',
@@ -246,6 +254,11 @@ Assignment.create(
   member_id: valeria.id,
   task_id: reserva_coliseo.id,
   score: 2
+)
+
+Assignment.create(
+  member_id: ana.id,
+  task_id: invitaciones.id,
 )
 
 Assignment.create(
