@@ -23,6 +23,7 @@ vicepre = Position.create(name: 'Vicepresidente', desc: 'Vicepresidente del Club
 tesorero = Position.create(name: 'Tesorero', desc: 'Tesorero del Club, encargado de las altas finanzas.')
 miembro = Position.create(name: 'Miembro', desc: 'Miembro regular del Club')
 
+
 # Eventos
 event1 = Event.create(
   name: 'Juegos InterUniversidades 2018',
@@ -141,7 +142,7 @@ post1 = Post.create(
 post2 = Post.create(
   title: 'Ganadores del Datajam 2018',
   content: 'Los ganadores del datajam 2018 fueron los siguientes!',
-  member_id: alex.id
+  member_id: ana.id
 )
 
 post3 = Post.create(
@@ -153,11 +154,39 @@ post3 = Post.create(
 # Add comments to post!
 PostComment.create(
   title: 'Felicitaciones!',
+  content: 'Felicitaciones a los ganadores. '\
+'Todos los equipos hicieron un gran trabajo!',
+  author: alex.name,
+  member_id: pedro.id,
+  post_id: post3.id
+)
+
+PostComment.create(
+  title: 'Felicitaciones!',
   content: 'Felicitaciones por conseguir '\
 'un nuevo auspiciante para el evento! Son lo máximo!',
   author: alex.name,
   member_id: alex.id,
   post_id: post3.id
+)
+
+#Announcements
+Announcement.create(
+  title: 'Eleccion Nueva Directiva',
+  fulltext: 'Chicos, desde el sabado 16 de febrero comienza la camapana electoral para las nuevas listas. Nuestros mejores deseos para ambas listas.',
+  member_id: alex.id
+)
+
+Announcement.create(
+  title: 'Curso a Profesionales',
+  fulltext: 'Estimados miembros, en el mes de Marzo se va a dictar un curso sobre logistica y organizacion de eventos. Proximamente mas informacion.',
+  member_id: jimmy.id
+)
+
+Announcement.create(
+  title: 'Rendicion de cuentas',
+  fulltext: 'Debido a que la presenta directiva esta pasando por un proceso de transicion, proximamente se realizara la rendicion de cuentas sobre el periodo 2018.',
+  member_id: andrew.id
 )
 
 # Tasks
@@ -216,13 +245,13 @@ bocaditos = Task.create(
 Assignment.create(
   member_id: valeria.id,
   task_id: reserva_coliseo.id,
-  score: 5
+  score: 2
 )
 
 Assignment.create(
   member_id: valeria.id,
   task_id: reserva_STEM.id,
-  score: 5
+  score: 3
 )
 
 Assignment.create(
@@ -232,13 +261,13 @@ Assignment.create(
 )
 
 Assignment.create(
-  member_id: alex.id,
+  member_id: carlos.id,
   task_id: equipos.id,
-  score: 4
+  score: 5
 )
 
 Assignment.create(
-  member_id: alex.id,
+  member_id: carlos.id,
   task_id: bocaditos.id,
 )
 
