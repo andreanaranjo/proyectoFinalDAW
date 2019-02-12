@@ -62,7 +62,7 @@
                     <v-card color="blue" dark>
                         <v-card-title primary class="title">Eventos Colaborados</v-card-title>
                         <DoughnutChart 
-                            :percent="datos.eventos_participados/datos.total_eventos *100"
+                            :percent="datosMiembro.eventos_participados/datos.total_eventos *100"
                             :visibleValue="true"
                             :value="datos.eventos_participados"
                             :max="datos.total_eventos"
@@ -114,7 +114,8 @@
                 "tareas": {"cumplidas":5, "pendientes":8},
                 "calificación_promedio": 2.8,
                 "anuncios_publicados":4,
-                "anuncios_totales":30}
+                "anuncios_totales":30},
+                datosMember: ""
             }
         },
         components: {
@@ -122,17 +123,21 @@
         },
         computed: {
             listaMiembros: function() {return this.miembros},
-            idMember: function() {return this.id}
+            idMember: function() {return this.id}, 
+        
         },
         mounted(){
             var API = this.$store.getters.api
             API.get("get_id")
-            .then( response => this.id = response.data)
-            API
-            .get("members")
-            .then( r => { this.miembros = r.data})
+            .then( response => {this.id = response.data})
             .catch(error => {console.log(error)})
             API
+            .get(`/get_member_metrics/${idMember.member_id}`)
+            .then( r => { this.datosMiembro = r.data})
+            .catch(error => {console.log(error)})
+            API.get("members")
+            .then( response => {this.miembros = response.data})
+            .catch(error => {console.log(error)})
         }
     }
 </script>
