@@ -116,8 +116,6 @@
                 "anuncios_publicados":4,
                 "anuncios_totales":30}
             }
-            }
-
         },
         components: {
             DoughnutChart
