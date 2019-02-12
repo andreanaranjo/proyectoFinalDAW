@@ -58,7 +58,8 @@
         { title: 'Perfil', icon: 'account_box',to:"/profile", requires_auth: true, always_show: false},
         { title: 'Iniciar sesión', icon: "lock_open", to:"/login", requires_auth: false,always_show: false},
         { title: 'Cerrar sesión', icon: "lock", to: "/logout", requires_auth: true, always_show: false},
-        { title: 'Contacto', icon: "email", to: "/contact", requires_auth: false,always_show: true}
+        { title: 'Contacto', icon: "email", to: "/contact", requires_auth: false,always_show: true},
+        { title: 'Reporte', icon:'email', to: "/report", requires_auth: true, always_show: false}
         ]
       }
     },

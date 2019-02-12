@@ -53,6 +53,10 @@ const router = new Router({
       component: () => import('./views/Contact')
     },
     {
+      path: '/report',
+      component: () => import('./views/Report')
+    },
+    {
       path: "*",
       component: NotFound
     }

@@ -8,8 +8,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "moment": "^2.24.0",
     "vue": "^2.5.22",
+    "vue-monthly-picker": "^0.2.6",
     "vue-router": "^3.0.1",
+    "vued3tree": "^3.6.4",
     "vuetify": "^1.3.0",
     "vuex": "^3.0.1"
   },
