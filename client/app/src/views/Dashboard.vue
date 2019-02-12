@@ -90,7 +90,7 @@
             .get("announcements")
             .then( r => this.anuncios = r.data)
             .catch(error => console.log(error))
-        },
+        }
         
     }
     

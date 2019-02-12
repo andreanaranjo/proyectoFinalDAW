@@ -15,25 +15,31 @@
             <AnnouncementShow :anuncio="a"/>
         </v-expansion-panel-content>
         </v-expansion-panel>
-        <br>
-        <h2 align = "center">Mis anuncios</h2>
-        <br>
-        <p>Poner aqui crud de anuncios</p>
+        <v-list subheader>
+            <v-subheader>Mis anuncios</v-subheader>
+                <v-list-tile v-for="anuncio in anunciosMiembro">
+                    <MyAnnouncementsShow :a="anuncio"/>
+                </v-list-tile>
+        </v-list>
     </div>
 </template>
 
 <script>
     import AnnouncementShow from '@/components/AnnouncementShow'
+    import MyAnnouncementsShow from '@/components/MyAnnouncementsShow'
     import axios from 'axios';
     export default {
         name: 'AnnouncementsView',
         components: {
-            AnnouncementShow
+            AnnouncementShow,
+            MyAnnouncementsShow
         },
         data () {
             return {
+                id: 0,
                 panel: [],
                 anuncios: {},
+                anunciosMiembro: [],
                 items: 5
             }
         },
@@ -42,6 +48,10 @@
             API
             .get('announcements')
             .then( r => this.anuncios = r.data)
+            .catch(error => console.log(error))
+            API
+            .get('announcements/by/')
+            .then( response => this.anunciosMiembro = response.data)
             .catch(error => console.log(error))
         },
         methods: {

@@ -6,8 +6,7 @@
             </v-flex>
         </v-layout>
         <div>
-                <h3 class="headline mb-0">{{event.name}}</h3>
-                <p>Día del evento: {{nicedate}}</p>
+            <p>Día del evento: {{nicedate}}</p>
         </div>
     </v-container>
     

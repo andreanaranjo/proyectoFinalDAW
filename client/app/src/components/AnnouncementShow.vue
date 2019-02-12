@@ -19,7 +19,3 @@
         props: ['anuncio']
     }
 </script>
-
-<style scoped>
-    
-</style>
