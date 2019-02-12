@@ -1,6 +1,6 @@
 <template>
     <v-container grid-list-xl>
-        <v-layout align-center justify-space-aroundd row fill-height>
+        <v-layout align-center justify-space-aroundd row lg4 fill-height>
             <v-flex xs12 md4 v-for="e in eventos">
                 <EventDescription :event="e"/>
             </v-flex>

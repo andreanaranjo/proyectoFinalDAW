@@ -35,4 +35,27 @@ class Api::V1::ManagementController < ApiController
     end
     render :json => array3
   end
+
+  def get_users_registered_event
+    Task.where(event_id: params[:event_id])
+  end
+
+  def get_member_metrics
+    # numberAssignment with tasks completed
+    relation = Assignment.where(member_id: params[:member_id]).joins('join tasks on tasks.id = assignments.task_id')
+    num_assignments_task_completed = relation.where('tasks.completed = true').count
+    num_assignments_task_total = relation.count
+    num_events_participated = Assignment.where(member_id: params[:member_id]).joins('join tasks on tasks.id = assignments.task_id join events on tasks.event_id = events.id').count()
+    promedio_calificaciones = Assignment.where(member_id: params[:member_id]).average(:score)
+    anuncios_publicados = Announcement.where(member_id: params[:member_id]).count
+    render :json => {
+      eventos_participados: num_events_participated,
+      tareas: {
+        cumplidas: num_assignments_task_completed,
+        pendientes: num_assignments_task_total - num_assignments_task_completed
+      }, calificacion_promedio: promedio_calificaciones,
+      anuncios_publicados: anuncios_publicados
+    }
+
+  end
 end

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       post '/upload' => "upload#upload_profile_pic"
       get 'get_id' => "management#get_member_id_from_user"
       get 'get_registered_events/:member_id' => "management#get_registered_events"
-
+      get 'get_member_metrics/:member_id' => "management#get_member_metrics"
       resources :announcements,:assignments,:events, :members, :positions, :posts, :post_comments, :tasks
     end
   end
