@@ -23,11 +23,11 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
 
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
+       columns do
+         panel "Information" do
+           para "Welcome to ActiveAdmin. Here you will be able to administrate the CRUD of all the entities in your project!"
+         end
+       end
     # end
   end # content
 end
