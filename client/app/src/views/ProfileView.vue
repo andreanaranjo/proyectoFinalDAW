@@ -13,7 +13,7 @@
             class="mx-auto d-block"
             size="130"
             >
-            <img src="https://randomuser.me/api/portraits/men/${i + 20}.jpg" alt="lorem">
+            <img src="https://randomuser.me/api/portraits/men/20.jpg" class="image" alt="lorem" width="100%" height="100%">
         </v-avatar>
         <v-card-text class="text-xs-center">
             <h6 class="category text-gray font-weight-thin mb-3">Posicion</h6>
