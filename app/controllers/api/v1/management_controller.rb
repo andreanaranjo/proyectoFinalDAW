@@ -16,4 +16,23 @@ class Api::V1::ManagementController < ApiController
     Announcement.where(member_id: params[:member_id])
   end
 
+  def get_members_assigned_to_event
+    Member.find(Assigment.where(event_id: params[:member_id]))
+  end
+
+  def get_registered_events
+    array = []
+    Assignment.where(member_id: params[:member_id]).each do |assigment|
+      array.append assigment.task_id
+    end
+    array2 = []
+    Task.find(array).each do |task|
+      array2.append task.event_id
+    end
+    array3 = []
+    Event.find(array2).each do |event|
+      array3.append({event: event, tasks: Task.where(event_id: event.id)})
+    end
+    render :json => array3
+  end
 end
