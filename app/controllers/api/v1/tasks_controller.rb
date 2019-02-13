@@ -1,53 +1,51 @@
-class Api::V1::TasksController < ApiController
-  before_action :set_api_v1_task, only: [:show, :update, :destroy]
+class API::V1::TasksController < ApiController
+  before_action :set_task, only: [:show, :update, :destroy]
 
-  # GET /api/v1/tasks
-  # GET /api/v1/tasks.json
+  # GET /tasks
   def index
-    @api_v1_tasks = Task.all
+    @tasks = Task.all
+
+    render json: @tasks
   end
 
-  # GET /api/v1/tasks/1
-  # GET /api/v1/tasks/1.json
+  # GET /tasks/1
   def show
+    render json: @task
   end
 
-  # POST /api/v1/tasks
-  # POST /api/v1/tasks.json
+  # POST /tasks
   def create
-    @api_v1_task = Task.new(api_v1_task_params)
+    @task = Task.new(task_params)
 
-    if @api_v1_task.save
-      render :show, status: :created, location: @api_v1_task
+    if @task.save
+      render json: @task, status: :created, location: @task
     else
-      render json: @api_v1_task.errors, status: :unprocessable_entity
+      render json: @task.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/tasks/1
-  # PATCH/PUT /api/v1/tasks/1.json
+  # PATCH/PUT /tasks/1
   def update
-    if @api_v1_task.update(api_v1_task_params)
-      render :show, status: :ok, location: @api_v1_task
+    if @task.update(task_params)
+      render json: @task
     else
-      render json: @api_v1_task.errors, status: :unprocessable_entity
+      render json: @task.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/tasks/1
-  # DELETE /api/v1/tasks/1.json
+  # DELETE /tasks/1
   def destroy
-    @api_v1_task.destroy
+    @task.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_task
-      @api_v1_task = Task.find(params[:id])
+    def set_task
+      @task = Task.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_task_params
-      params.fetch(:api_v1_task, {})
+    # Only allow a trusted parameter "white list" through.
+    def task_params
+      params.require(:task).permit(:name, :desc, :deadline, :event_id, :completed)
     end
 end

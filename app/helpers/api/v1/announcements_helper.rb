@@ -1,2 +1,2 @@
-module Api::V1::AnnouncementsHelper
+module API::V1::AnnouncementsHelper
 end

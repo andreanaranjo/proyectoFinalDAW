@@ -7,7 +7,7 @@
     <v-layout align-center justify-space-around row fill-height>
         
         <v-flex xs12 md4>
-        <material-card class="v-card-profile">
+        <v-material-card class="v-card-profile">
             <v-avatar
             slot="offset"
             class="mx-auto d-block"
@@ -30,7 +30,7 @@
                 </v-btn>
             </router-link>
         </v-card-text>
-        </material-card>
+        </v-material-card>
     </v-flex>
 <v-flex xs12 md5>
     

@@ -1,53 +1,51 @@
-class Api::V1::PositionsController < ApiController
-  before_action :set_api_v1_position, only: [:show, :update, :destroy]
+class API::V1::PositionsController < ApiController
+  before_action :set_position, only: [:show, :update, :destroy]
 
-  # GET /api/v1/positions
-  # GET /api/v1/positions.json
+  # GET /positions
   def index
-    @api_v1_positions = Position.all
+    @positions = Position.all
+
+    render json: @positions
   end
 
-  # GET /api/v1/positions/1
-  # GET /api/v1/positions/1.json
+  # GET /positions/1
   def show
+    render json: @position
   end
 
-  # POST /api/v1/positions
-  # POST /api/v1/positions.json
+  # POST /positions
   def create
-    @api_v1_position = Position.new(api_v1_position_params)
+    @position = Position.new(position_params)
 
-    if @api_v1_position.save
-      render :show, status: :created, location: @api_v1_position
+    if @position.save
+      render json: @position, status: :created, location: @position
     else
-      render json: @api_v1_position.errors, status: :unprocessable_entity
+      render json: @position.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/positions/1
-  # PATCH/PUT /api/v1/positions/1.json
+  # PATCH/PUT /positions/1
   def update
-    if @api_v1_position.update(api_v1_position_params)
-      render :show, status: :ok, location: @api_v1_position
+    if @position.update(position_params)
+      render json: @position
     else
-      render json: @api_v1_position.errors, status: :unprocessable_entity
+      render json: @position.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/positions/1
-  # DELETE /api/v1/positions/1.json
+  # DELETE /positions/1
   def destroy
-    @api_v1_position.destroy
+    @position.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_position
-      @api_v1_position = Position.find(params[:id])
+    def set_position
+      @position = Position.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_position_params
-      params.fetch(:api_v1_position, {})
+    # Only allow a trusted parameter "white list" through.
+    def position_params
+      params.require(:position).permit(:name, :desc)
     end
 end

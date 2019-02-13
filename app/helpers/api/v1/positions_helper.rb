@@ -1,2 +1,2 @@
-module Api::V1::PositionsHelper
+module API::V1::PositionsHelper
 end

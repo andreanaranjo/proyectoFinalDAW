@@ -1,2 +1,2 @@
-module Api::V1::AssignmentsHelper
+module API::V1::AssignmentsHelper
 end

@@ -1,54 +1,51 @@
-class Api::V1::AnnouncementsController < ApiController
-  before_action :set_api_v1_announcement, only: [:show, :update, :destroy]
+class API::V1::AnnouncementsController < ApiController
+  before_action :set_announcement, only: [:show, :update, :destroy]
 
-  # GET /api/v1/announcements
-  # GET /api/v1/announcements.json
+  # GET /announcements
   def index
-    @api_v1_announcements = Announcement.all
+    @announcements = Announcement.all
+
+    render json: @announcements
   end
 
-  # GET /api/v1/announcements/1
-  # GET /api/v1/announcements/1.json
+  # GET /announcements/1
   def show
+    render json: @announcement
   end
 
-  # POST /api/v1/announcements
-  # POST /api/v1/announcements.json
+  # POST /announcements
   def create
-    @api_v1_announcement = Announcement.new(api_v1_announcement_params)
+    @announcement = Announcement.new(announcement_params)
 
-    if @api_v1_announcement.save
-      render :show, status: :created, location: @api_v1_announcement
+    if @announcement.save
+      render json: @announcement, status: :created, location: @announcement
     else
-      render json: @api_v1_announcement.errors, status: :unprocessable_entity
+      render json: @announcement.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/announcements/1
-  # PATCH/PUT /api/v1/announcements/1.json
+  # PATCH/PUT /announcements/1
   def update
-    if @api_v1_announcement.update(api_v1_announcement_params)
-      render :show, status: :ok, location: @api_v1_announcement
+    if @announcement.update(announcement_params)
+      render json: @announcement
     else
-      render json: @api_v1_announcement.errors, status: :unprocessable_entity
+      render json: @announcement.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/announcements/1
-  # DELETE /api/v1/announcements/1.json
+  # DELETE /announcements/1
   def destroy
-    @api_v1_announcement.destroy
+    @announcement.destroy
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_announcement
-      @api_v1_announcement = Announcement.find(params[:id])
+    def set_announcement
+      @announcement = Announcement.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_announcement_params
-      params.fetch(:api_v1_announcement, {})
+    # Only allow a trusted parameter "white list" through.
+    def announcement_params
+      params.require(:announcement).permit(:title, :fulltext, :member_id)
     end
 end

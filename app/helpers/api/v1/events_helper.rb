@@ -1,2 +1,2 @@
-module Api::V1::EventsHelper
+module API::V1::EventsHelper
 end

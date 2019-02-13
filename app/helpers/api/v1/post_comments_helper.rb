@@ -1,2 +1,2 @@
-module Api::V1::PostCommentsHelper
+module API::V1::PostCommentsHelper
 end

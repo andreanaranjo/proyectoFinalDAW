@@ -12,14 +12,14 @@
         </v-card-title>
         <v-card-actions>
             <v-layout align-center justify-space-around row fill-height>
-                <v-dialog v-model="dialog" 
+                <v-dialog v-model="expandView"
                 :max-width="($vuetify.breakpoint.mdAndUp) ? '600px': '100%'" 
                 
                 :fullscreen="$vuetify.breakpoint.xsOnly" hide-overlay transition="dialog-bottom-transition">
                 <v-btn slot="activator" color="orange" dark>Descripción</v-btn>
                 <v-card :min-height="($vuetify.breakpoint.mdAndUp) ? '600px': '100%'" >
                     <v-toolbar  dark color="primary">
-                        <v-btn icon dark @click="dialog = false">
+                        <v-btn icon dark @click="expandView = false">
                             <v-icon>close</v-icon>
                         </v-btn>
                         <v-toolbar-title>{{event.name}}</v-toolbar-title>
@@ -62,8 +62,8 @@
         },
         data () {
             return {
-                dialog: false,
-                tasks: []
+                expandView: false,
+                tasks: [],
             }
         },
         mounted() {

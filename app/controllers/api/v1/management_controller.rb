@@ -1,4 +1,4 @@
-class Api::V1::ManagementController < ApiController
+class API::V1::ManagementController < ApiController
   def get_member_id_from_user
     if request.headers['Authorization'].present?
       decoded_auth_token = JsonWebToken.decode request.headers['Authorization'].split(' ').last

@@ -4,9 +4,9 @@
         <v-layout row wrap v-if="eventos.length > 0">
             <v-flex lg3 xs12 v-for="e in listaEventos" class="eventos">
                 <v-card max-width="400"    >
-                    <v-card-media contain>
+                    <v-responsive contain>
                         <v-img src="//via.placeholder.com/350x150"/>
-                    </v-card-media>
+                    </v-responsive>
                     <v-card-title primary-title>
                         <EventShow :event="e"/>
                     </v-card-title>
@@ -22,9 +22,9 @@
         <v-layout row wrap v-if="anuncios.length > 0">
             <v-flex lg3 xs12 v-for="a in listaAnuncios" class="anuncios">
                 <v-card max-width="400">
-                    <v-card-media contain>
+                    <v-responsive contain>
                             <v-img src="//via.placeholder.com/350x150"/>
-                    </v-card-media>
+                    </v-responsive>
                     <v-card-title primary-title>
                         <AnnouncementShow :anuncio="a" />
                     </v-card-title>
@@ -36,9 +36,9 @@
         <v-layout row wrap v-if="miembros.length > 0">
             <v-flex lg3 xs12 v-for="m in listaMiembros" class="miembros">
                 <v-card>
-                        <v-card-media contain>
+                        <v-responsive contain>
                                 <v-img src="//via.placeholder.com/350x150"/>
-                        </v-card-media>
+                        </v-responsive>
                         <v-card-title primary-title>
                             <MemberShow :member="m"/>
                         </v-card-title>

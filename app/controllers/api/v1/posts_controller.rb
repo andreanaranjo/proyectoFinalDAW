@@ -1,53 +1,51 @@
-class Api::V1::PostsController < ApiController
-  before_action :set_api_v1_post, only: [:show, :update, :destroy]
+class API::V1::PostsController < ApiController
+  before_action :set_post, only: [:show, :update, :destroy]
 
-  # GET /api/v1/posts
-  # GET /api/v1/posts.json
+  # GET /posts
   def index
-    @api_v1_posts = Post.all
+    @posts = Post.all
+
+    render json: @posts
   end
 
-  # GET /api/v1/posts/1
-  # GET /api/v1/posts/1.json
+  # GET /posts/1
   def show
+    render json: @post
   end
 
-  # POST /api/v1/posts
-  # POST /api/v1/posts.json
+  # POST /posts
   def create
-    @api_v1_post = Post.new(api_v1_post_params)
+    @post = Post.new(post_params)
 
-    if @api_v1_post.save
-      render :show, status: :created, location: @api_v1_post
+    if @post.save
+      render json: @post, status: :created, location: @post
     else
-      render json: @api_v1_post.errors, status: :unprocessable_entity
+      render json: @post.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/posts/1
-  # PATCH/PUT /api/v1/posts/1.json
+  # PATCH/PUT /posts/1
   def update
-    if @api_v1_post.update(api_v1_post_params)
-      render :show, status: :ok, location: @api_v1_post
+    if @post.update(post_params)
+      render json: @post
     else
-      render json: @api_v1_post.errors, status: :unprocessable_entity
+      render json: @post.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/posts/1
-  # DELETE /api/v1/posts/1.json
+  # DELETE /posts/1
   def destroy
-    @api_v1_post.destroy
+    @post.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_post
-      @api_v1_post = Post.find(params[:id])
+    def set_post
+      @post = Post.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_post_params
-      params.fetch(:api_v1_post, {})
+    # Only allow a trusted parameter "white list" through.
+    def post_params
+      params.require(:post).permit(:member_id, :content, :title)
     end
 end

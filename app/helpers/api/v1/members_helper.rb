@@ -1,2 +1,2 @@
-module Api::V1::MembersHelper
+module API::V1::MembersHelper
 end

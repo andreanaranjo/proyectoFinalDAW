@@ -1,2 +1,2 @@
-json.merge! api_v1_post.attributes
-json.url api_v1_post_url(api_v1_post, format: :json)
+json.merge! post.attributes
+json.url post_url(post, format: :json)

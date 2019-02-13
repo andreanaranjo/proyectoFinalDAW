@@ -14,6 +14,7 @@
 <script>
 export default {
     name: 'MyAnnouncementsShow',
-    props: ['a']   
+    props: ['a'],
+    
 }
 </script>

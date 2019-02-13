@@ -1,57 +1,51 @@
-class Api::V1::MembersController < ApiController
-  before_action :set_api_v1_member, only: [:show, :update, :destroy]
+class API::V1::MembersController < ApiController
+  before_action :set_member, only: [:show, :update, :destroy]
 
-  # GET /api/v1/members
-  # GET /api/v1/members.json
+  # GET /members
   def index
-    @api_v1_members = Member.all
+    @members = Member.all
+
+    render json: @members
   end
 
-  # GET /api/v1/members/1
-  # GET /api/v1/members/1.json
+  # GET /members/1
   def show
+    render json: @member
   end
 
-  # POST /api/v1/members
-  # POST /api/v1/members.json
+  # POST /members
   def create
-    @api_v1_member = Member.new(api_v1_member_params)
+    @member = Member.new(member_params)
 
-    if @api_v1_member.save
-      render :show, status: :created, location: @api_v1_member
+    if @member.save
+      render json: @member, status: :created, location: @member
     else
-      render json: @api_v1_member.errors, status: :unprocessable_entity
+      render json: @member.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/members/1
-  # PATCH/PUT /api/v1/members/1.json
+  # PATCH/PUT /members/1
   def update
-    if @api_v1_member.update(api_v1_member_params)
-      render :show, status: :ok, location: @api_v1_member
+    if @member.update(member_params)
+      render json: @member
     else
-      render json: @api_v1_member.errors, status: :unprocessable_entity
+      render json: @member.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/members/1
-  # DELETE /api/v1/members/1.json
+  # DELETE /members/1
   def destroy
-    @api_v1_member.destroy
+    @member.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_member
-      begin
-      @api_v1_member = Member.find(params[:id])
-      rescue
-
-      end
+    def set_member
+      @member = Member.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_member_params
-      params.fetch(:api_v1_member, {})
+    # Only allow a trusted parameter "white list" through.
+    def member_params
+      params.require(:member).permit(:name, :last_name, :dob, :date_ingreso, :position_id)
     end
 end

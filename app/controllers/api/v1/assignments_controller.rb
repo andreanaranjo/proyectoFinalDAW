@@ -1,53 +1,51 @@
-class Api::V1::AssignmentsController < ApiController
-  before_action :set_api_v1_assignment, only: [:show, :update, :destroy]
+class API::V1::AssignmentsController < ApiController
+  before_action :set_assignment, only: [:show, :update, :destroy]
 
-  # GET /api/v1/assignments
-  # GET /api/v1/assignments.json
+  # GET /assignments
   def index
-    @api_v1_assignments = Assignment.all
+    @assignments = Assignment.all
+
+    render json: @assignments
   end
 
-  # GET /api/v1/assignments/1
-  # GET /api/v1/assignments/1.json
+  # GET /assignments/1
   def show
+    render json: @assignment
   end
 
-  # POST /api/v1/assignments
-  # POST /api/v1/assignments.json
+  # POST /assignments
   def create
-    @api_v1_assignment = Assignment.new(api_v1_assignment_params)
+    @assignment = Assignment.new(assignment_params)
 
-    if @api_v1_assignment.save
-      render :show, status: :created, location: @api_v1_assignment
+    if @assignment.save
+      render json: @assignment, status: :created, location: @assignment
     else
-      render json: @api_v1_assignment.errors, status: :unprocessable_entity
+      render json: @assignment.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/assignments/1
-  # PATCH/PUT /api/v1/assignments/1.json
+  # PATCH/PUT /assignments/1
   def update
-    if @api_v1_assignment.update(api_v1_assignment_params)
-      render :show, status: :ok, location: @api_v1_assignment
+    if @assignment.update(assignment_params)
+      render json: @assignment
     else
-      render json: @api_v1_assignment.errors, status: :unprocessable_entity
+      render json: @assignment.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/assignments/1
-  # DELETE /api/v1/assignments/1.json
+  # DELETE /assignments/1
   def destroy
-    @api_v1_assignment.destroy
+    @assignment.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_assignment
-      @api_v1_assignment = Assignment.find(params[:id])
+    def set_assignment
+      @assignment = Assignment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_assignment_params
-      params.fetch(:api_v1_assignment, {})
+    # Only allow a trusted parameter "white list" through.
+    def assignment_params
+      params.require(:assignment).permit(:member_id, :task_id, :score)
     end
 end

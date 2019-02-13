@@ -1,2 +1,2 @@
-json.merge! api_v1_post_comment.attributes
-json.url api_v1_post_comment_url(api_v1_post_comment, format: :json)
+json.merge! post_comment.attributes
+json.url post_comment_url(post_comment, format: :json)

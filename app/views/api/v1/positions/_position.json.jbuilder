@@ -1,2 +1,2 @@
-json.merge! api_v1_position.attributes
-json.url api_v1_position_url(api_v1_position, format: :json)
+json.merge! position.attributes
+json.url position_url(position, format: :json)

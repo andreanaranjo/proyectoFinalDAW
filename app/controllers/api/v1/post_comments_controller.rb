@@ -1,53 +1,51 @@
-class Api::V1::PostCommentsController < ApiController
-  before_action :set_api_v1_post_comment, only: [:show, :update, :destroy]
+class API::V1::PostCommentsController < ApiController
+  before_action :set_post_comment, only: [:show, :update, :destroy]
 
-  # GET /api/v1/post_comments
-  # GET /api/v1/post_comments.json
+  # GET /post_comments
   def index
-    @api_v1_post_comments = PostComment.all
+    @post_comments = PostComment.all
+
+    render json: @post_comments
   end
 
-  # GET /api/v1/post_comments/1
-  # GET /api/v1/post_comments/1.json
+  # GET /post_comments/1
   def show
+    render json: @post_comment
   end
 
-  # POST /api/v1/post_comments
-  # POST /api/v1/post_comments.json
+  # POST /post_comments
   def create
-    @api_v1_post_comment = PostComment.new(api_v1_post_comment_params)
+    @post_comment = PostComment.new(post_comment_params)
 
-    if @api_v1_post_comment.save
-      render :show, status: :created, location: @api_v1_post_comment
+    if @post_comment.save
+      render json: @post_comment, status: :created, location: @post_comment
     else
-      render json: @api_v1_post_comment.errors, status: :unprocessable_entity
+      render json: @post_comment.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /api/v1/post_comments/1
-  # PATCH/PUT /api/v1/post_comments/1.json
+  # PATCH/PUT /post_comments/1
   def update
-    if @api_v1_post_comment.update(api_v1_post_comment_params)
-      render :show, status: :ok, location: @api_v1_post_comment
+    if @post_comment.update(post_comment_params)
+      render json: @post_comment
     else
-      render json: @api_v1_post_comment.errors, status: :unprocessable_entity
+      render json: @post_comment.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /api/v1/post_comments/1
-  # DELETE /api/v1/post_comments/1.json
+  # DELETE /post_comments/1
   def destroy
-    @api_v1_post_comment.destroy
+    @post_comment.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_post_comment
-      @api_v1_post_comment = PostComment.find(params[:id])
+    def set_post_comment
+      @post_comment = PostComment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_post_comment_params
-      params.fetch(:api_v1_post_comment, {})
+    # Only allow a trusted parameter "white list" through.
+    def post_comment_params
+      params.require(:post_comment).permit(:content, :post_id, :author, :member_id, :title)
     end
 end

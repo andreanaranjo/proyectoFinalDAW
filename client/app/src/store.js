@@ -13,6 +13,7 @@ export default new Vuex.Store({
     loading: false,
     logged_in: false,
     member_id: 0,
+    user: {}
   },
   mutations: {
     setToken (state, payload){
@@ -29,11 +30,14 @@ export default new Vuex.Store({
     },
     setMemberID(state,payload){
       state.member_id = payload
+    },
+    setUser(state,payload){
+      state.user = payload
     }
   },
   actions: {
     userSignIn ({commit}, payload) {
-      
+
       commit('setLoading', true)
       axios.post(host+"/authenticate",{
         'username': payload.user,
@@ -53,7 +57,12 @@ export default new Vuex.Store({
       })
       this.getters.api.get('get_id').then(response => {
         commit('setMemberID', response.data["member_id"])
-      }) 
+      })
+      this.getters.api.get(`members/${this.state.member_id}`).then(response => {
+        commit('setMember', response.data)
+      }).catch(error => {
+        console.error(error)
+      })
     },
     userLogout ({commit}){
       commit('setToken',"")
