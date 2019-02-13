@@ -85,13 +85,13 @@
                     let API = this.$store.getters.api;
                     API.put(`announcements/${this.anuncio.id}`, this.copied).then(
                         response => {
-                            console.log("Se cambió correctamente la data en el backend del anuncio con índice: " + index)
-                            this.$emit('update:announcement', response.data, this.index)
+                            console.log("Se cambió correctamente la data en el backend del anuncio con índice: " + this.index)
+                            this.$emit('update-announcement', {announcement: response.data, index: this.index})
                             this.showModify = false
                         }
                     ).catch(error => {
                         this.showModify = false;
-                        this.errors = error;
+                        console.error(error);
                         console.log(error.response.body)
                     })
 
