@@ -18,7 +18,8 @@ class API::V1::AnnouncementsController < ApiController
     @announcement = Announcement.new(announcement_params)
 
     if @announcement.save
-      render json: @announcement, status: :created, location: @announcement
+
+      render json: @announcement, status: :created, location: api_v1_announcement_url(@announcement)
     else
       render json: @announcement.errors, status: :unprocessable_entity
     end

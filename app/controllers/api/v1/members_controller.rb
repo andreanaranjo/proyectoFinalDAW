@@ -18,7 +18,7 @@ class API::V1::MembersController < ApiController
     @member = Member.new(member_params)
 
     if @member.save
-      render json: @member, status: :created, location: @member
+      render json: @member, status: :created, location: api_v1_member_url(@member)
     else
       render json: @member.errors, status: :unprocessable_entity
     end

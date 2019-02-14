@@ -18,7 +18,7 @@ class API::V1::PositionsController < ApiController
     @position = Position.new(position_params)
 
     if @position.save
-      render json: @position, status: :created, location: @position
+      render json: @position, status: :created, location: api_v1_position_url(@position)
     else
       render json: @position.errors, status: :unprocessable_entity
     end

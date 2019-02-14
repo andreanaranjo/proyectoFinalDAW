@@ -17,11 +17,11 @@
     </v-expansion-panel>
     <v-list subheader>
         <v-subheader>Mis anuncios</v-subheader>
-        <v-list-tile v-for="(anuncio,i) in anunciosMiembro" >
+        <v-list-tile v-for="(anuncio,i) in anunciosMiembro" :key="anuncio.id">
             <v-list-tile-content>
                 <v-list-tile-title>{{anuncio.title}}</v-list-tile-title>
             </v-list-tile-content>
-            <AnnouncementUD :anuncio="anuncio" :index="i" v-on:update-announcement="updateAnnouncement"/>
+            <AnnouncementUD :anuncio="anuncio" :index="i" v-on:update-announcement="updateAnnouncement" v-on:delete-announcement="deleteAnnouncement"/>
     </v-list-tile>
 </v-list>
 </div>
@@ -70,6 +70,11 @@
             updateAnnouncement({announcement, index}) {
                 console.log("Entre en updateAnnouncement, con anuncio " + JSON.stringify(announcement) + " e index: "+ index);
                 this.$set(this.anunciosMiembro,index, announcement)
+            },
+            deleteAnnouncement(index){
+                console.log("Entre en deleteAnnouncement")
+                this.anunciosMiembro.splice(index,1)
+
             }
         }
     }

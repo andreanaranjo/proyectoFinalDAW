@@ -18,7 +18,7 @@ class API::V1::AssignmentsController < ApiController
     @assignment = Assignment.new(assignment_params)
 
     if @assignment.save
-      render json: @assignment, status: :created, location: @assignment
+      render json: @assignment, status: :created, location: api_v1_assignment_url(@assignment)
     else
       render json: @assignment.errors, status: :unprocessable_entity
     end
