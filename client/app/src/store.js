@@ -36,33 +36,29 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    userSignIn ({commit}, payload) {
+    async userSignIn ({commit}, payload) {
+      try {
+        commit('setLoading', true)
+        const response = await axios.post(host+"/authenticate",{
+          'username': payload.user,
+          'password': payload.password
+        });
 
-      commit('setLoading', true)
-      axios.post(host+"/authenticate",{
-        'username': payload.user,
-        'password': payload.password
-      }).then(response => {
-        commit('setToken', response.data["auth_token"])
-        // Guardar el token en localStorage.
+        commit('setToken', response.data["auth_token"]);
         localStorage.setItem('APIToken',response.data["auth_token"])
-        commit('setLoading', false)
+        let p1 = await this.getters.api.get('get_id')
+        let p2 = await this.getters.api.get(`members/${p1.data.member_id}`)
+        commit('setMemberID', p1.data.member_id)
+        commit('setMember', p2.data)
         commit('setError', null)
         commit('setLoggedIn',true)
+        commit('setLoading', false)
         router.push("/dashboard")
-      }).catch(error => {
-        commit('setError', error.message + " " + JSON.stringify(error.response.data))
+      }catch (error) {
+        commit('setError', error.message)
         commit('setLoading', false)
         commit('setLoggedIn',false)
-      })
-      this.getters.api.get('get_id').then(response => {
-        commit('setMemberID', response.data["member_id"])
-      })
-      this.getters.api.get(`members/${this.state.member_id}`).then(response => {
-        commit('setMember', response.data)
-      }).catch(error => {
-        console.error(error)
-      })
+      }
     },
     userLogout ({commit}){
       commit('setToken',"")
@@ -78,6 +74,18 @@ export default new Vuex.Store({
         timeout: 1000,
         headers: {Authorization: `Bearer ${state.token}`}
       })
+    }
+  },
+  methods: {
+    async retrieveMemberID(){
+      try {
+        const response = await this.getters.api.get("get_id");
+        commit('set')
+        const member_data = await this.getters.api.get(`members/`)
+
+      }catch (e) {
+        console.log(e)
+      }
     }
   }
 })
